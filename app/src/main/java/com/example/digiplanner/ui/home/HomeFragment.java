@@ -12,17 +12,17 @@ import com.example.digiplanner.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-private FragmentHomeBinding binding;
+private FragmentHomeBinding fragmentH;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
-    binding = FragmentHomeBinding.inflate(inflater, container, false);
-    View root = binding.getRoot();
-
-        final TextView textView = binding.textHome;
+    fragmentH = FragmentHomeBinding.inflate(inflater, container, false);
+    View root = fragmentH.getRoot();
+        //elementos del layout
+        final TextView textView = fragmentH.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
@@ -30,6 +30,6 @@ private FragmentHomeBinding binding;
 @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+    fragmentH = null;
     }
 }

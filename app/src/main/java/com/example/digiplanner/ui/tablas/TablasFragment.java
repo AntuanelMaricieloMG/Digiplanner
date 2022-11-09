@@ -1,49 +1,46 @@
 package com.example.digiplanner.ui.tablas;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.digiplanner.R;
+import com.example.digiplanner.databinding.FragmentAnadirBinding;
 import com.example.digiplanner.databinding.FragmentTablasBinding;
+import com.example.digiplanner.ui.anadir.AnadirViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-public class TablasFragment extends AppCompatActivity {
+public class TablasFragment extends Fragment {
 
-    private AppBarConfiguration appBarConfiguration;
-    private FragmentTablasBinding binding;
+    private FragmentTablasBinding fragmentT;
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        TablasViewModel tablasViewModel =
+                new ViewModelProvider(this).get(TablasViewModel.class);
 
-        binding = FragmentTablasBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_tablas_fragment);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fragmentT = FragmentTablasBinding.inflate(inflater, container, false);
+        View root = fragmentT.getRoot();
+        //elementos del layout
+        final TextView textView = fragmentT.textTablas;
+        tablasViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_tablas_fragment);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }*/
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentT = null;
+    }
 }

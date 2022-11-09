@@ -1,16 +1,16 @@
-package com.example.digiplanner.ui.home;
+package com.example.digiplanner.ui.cuentapersonal;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
-    // LiveData solo actualiza observadores de componentes cuando estado de ciclo de vida activo.
+public class CuentaPersonalViewModel extends ViewModel {
+
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public CuentaPersonalViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("HOME");
+        mText.setValue("Cuenta");
     }
 
     public LiveData<String> getText() {

@@ -1,16 +1,16 @@
-package com.example.digiplanner.ui.home;
+package com.example.digiplanner.ui.anadir;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
-    // LiveData solo actualiza observadores de componentes cuando estado de ciclo de vida activo.
+public class AnadirViewModel extends ViewModel {
+
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public AnadirViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("HOME");
+        mText.setValue("AÑADIR");
     }
 
     public LiveData<String> getText() {

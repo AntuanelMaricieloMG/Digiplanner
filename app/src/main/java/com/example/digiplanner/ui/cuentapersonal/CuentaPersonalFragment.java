@@ -1,49 +1,40 @@
 package com.example.digiplanner.ui.cuentapersonal;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.annotation.NonNull;
 
-import com.example.digiplanner.R;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.snackbar.Snackbar;
 
-public class CuentaPersonalFragment extends AppCompatActivity {
+import com.example.digiplanner.databinding.FragmentCuentapersonalBinding;
 
-    /*private AppBarConfiguration appBarConfiguration;
-    private FragmentCuentapersonalBinding binding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+public class CuentaPersonalFragment extends Fragment {
 
-        binding = FragmentCuentapersonalBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    private FragmentCuentapersonalBinding fragmentC;
 
-        setSupportActionBar(binding.toolbar);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        CuentaPersonalViewModel cuentaPersonalViewModel =
+                new ViewModelProvider(this).get(CuentaPersonalViewModel.class);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_cuenta_personal_fragment);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fragmentC = FragmentCuentapersonalBinding.inflate(inflater, container, false);
+        View root = fragmentC.getRoot();
+        //elementos del layout
+        final TextView textView = fragmentC.textCuenta;
+        cuentaPersonalViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_cuenta_personal_fragment);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }*/
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentC = null;
+    }
 }

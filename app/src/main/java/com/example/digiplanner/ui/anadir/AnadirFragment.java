@@ -1,49 +1,39 @@
 package com.example.digiplanner.ui.anadir;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.example.digiplanner.R;
+
 import com.example.digiplanner.databinding.FragmentAnadirBinding;
-import com.google.android.material.snackbar.Snackbar;
 
-public class AnadirFragment extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private FragmentAnadirBinding binding;
+public class AnadirFragment extends Fragment {
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private FragmentAnadirBinding fragmentA;
 
-        binding = FragmentAnadirBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        AnadirViewModel anadirViewModel =
+                new ViewModelProvider(this).get(AnadirViewModel.class);
 
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_anadir_fragment);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fragmentA = FragmentAnadirBinding.inflate(inflater, container, false);
+        View root = fragmentA.getRoot();
+        //elementos del layout
+        final TextView textView = fragmentA.textAnadir;
+        anadirViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_anadir_fragment);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }*/
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentA = null;
+    }
 }

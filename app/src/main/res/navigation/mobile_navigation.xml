@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_cuentapersonal">
+
+    <fragment
+        android:id="@+id/navigation_cuentapersonal"
+        android:name="com.example.digiplanner.ui.cuentapersonal.CuentaPersonalFragment"
+        android:label="@string/title_cuentapersonal"
+        tools:layout="@layout/fragment_cuentapersonal" />
 
     <fragment
         android:id="@+id/navigation_home"
@@ -12,14 +18,21 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.digiplanner.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_anadir"
+        android:name="com.example.digiplanner.ui.anadir.AnadirFragment"
+        android:label="@string/title_anadir"
+        tools:layout="@layout/fragment_anadir" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.digiplanner.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_postits"
+        android:name="com.example.digiplanner.ui.postits.PostitsFragment"
+        android:label="@string/title_postits"
+        tools:layout="@layout/fragment_postits" />
+
+    <fragment
+        android:id="@+id/navigation_tablas"
+        android:name="com.example.digiplanner.ui.tablas.TablasFragment"
+        android:label="@string/title_tablas"
+        tools:layout="@layout/fragment_tablas" />
+
 </navigation>

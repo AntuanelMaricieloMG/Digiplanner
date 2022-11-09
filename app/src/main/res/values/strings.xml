@@ -11,10 +11,14 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_anadir">Añadir</string>
+    <string name="title_cuentapersonal">Cuenta Personal</string>
+    <string name="title_postits">Post its</string>
+    <string name="title_tablas">Tablas</string>
+
     <string name="title_activity_anadir_fragment">AnadirFragment</string>
     <string name="title_activity_posits_fragment">PositsFragment</string>
     <string name="title_activity_tablas_fragment">TablasFragment</string>
     <string name="title_activity_cuenta_personal_fragment">CuentaPersonalFragment</string>
+
 </resources>
