@@ -20,5 +20,6 @@
     <string name="title_activity_posits_fragment">PositsFragment</string>
     <string name="title_activity_tablas_fragment">TablasFragment</string>
     <string name="title_activity_cuenta_personal_fragment">CuentaPersonalFragment</string>
+    <string name="foto_cuenta" />
 
 </resources>
