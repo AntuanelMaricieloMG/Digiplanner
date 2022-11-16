@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 
@@ -27,6 +28,7 @@ public class CuentaPersonalFragment extends Fragment {
     TextView textoNotificaciones;
     TextView textoCerrar;
     TextView textoBorrar;
+    CardView vistaCirculo;
     //ºprivate FragmentCuentapersonalBinding fragmentC;
 
     @Override
@@ -56,6 +58,7 @@ public class CuentaPersonalFragment extends Fragment {
         textoNotificaciones = (TextView) view.findViewById(R.id.textNotificaciones);
         textoCerrar = (TextView) view.findViewById(R.id.textCerrar);
         textoBorrar = (TextView) view.findViewById(R.id.textBorrar);
+        vistaCirculo = (CardView) view.findViewById(R.id.vistaCircular);
         return view;
     }
 
