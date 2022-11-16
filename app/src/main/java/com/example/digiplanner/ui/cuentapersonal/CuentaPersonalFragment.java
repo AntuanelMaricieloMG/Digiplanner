@@ -39,15 +39,7 @@ public class CuentaPersonalFragment extends Fragment {
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        /*CuentaPersonalViewModel cuentaPersonalViewModel =
-                new ViewModelProvider(this).get(CuentaPersonalViewModel.class);
 
-        fragmentC = FragmentCuentapersonalBinding.inflate(inflater, container, false);
-        View root = fragmentC.getRoot();
-        //elementos del layout
-        final TextView textView = fragmentC.textCuenta;
-        cuentaPersonalViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;*/
         View view = inflater.inflate(R.layout.fragment_cuentapersonal,container,false);
 
         //Elementos por ID

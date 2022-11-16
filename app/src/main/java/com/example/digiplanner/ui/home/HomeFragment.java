@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
         AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
         grid.setAdapter(adaptador);
 
-
         return view;
     }
 }

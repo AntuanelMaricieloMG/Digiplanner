@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_cuentapersonal"
-        android:text="C"
+        android:icon="@drawable/persona"
         android:title="@string/title_cuentapersonal"/>
 
     <item
@@ -13,17 +13,17 @@
 
     <item
         android:id="@+id/navigation_anadir"
-        android:text="A"
+        android:icon="@drawable/mas"
         android:title="@string/title_anadir"/>
 
     <item
         android:id="@+id/navigation_postits"
-        android:text="P"
+        android:icon="@drawable/post"
         android:title="@string/title_postits"/>
 
     <item
         android:id="@+id/navigation_tablas"
-        android:text="T"
+        android:icon="@drawable/tabla"
         android:title="@string/title_tablas"/>
 
 </menu>
