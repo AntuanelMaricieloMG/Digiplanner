@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.postits.PostitsFragment"
-    android:background="#D1BAED">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:id="@+id/linea_centro_notas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:layout_constraintBottom_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        android:id="@+id/linea_centro2"
+        android:layout_centerInParent="true">
 
     </RelativeLayout>
 
@@ -23,32 +18,32 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="150dp"
-        android:layout_above="@+id/linea_centro_notas"
+        android:layout_above="@+id/linea_centro2"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_inicio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hola"
+            android:text="Usuario nuevo"
             android:textSize="42dp"
             />
     </LinearLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/linea_centro_notas"
+        android:layout_above="@id/linea_centro2"
         android:layout_marginBottom="10dp"
         android:id="@+id/text_email"
         android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginLeft="30dp">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_email"
+            android:id = "@+id/text_login_nuevo_email"
             android:hint="Introduce email"
             android:inputType="textEmailAddress">
         </EditText>
@@ -57,22 +52,22 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linea_centro_notas"
+        android:layout_below="@id/linea_centro2"
         android:layout_marginTop="10dp"
         android:id="@+id/text_contraseña"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        tools:ignore="MissingConstraints"
         app:passwordToggleEnabled="true">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_contraseña"
+            android:id = "@+id/text_login_nueva_contraseña"
             android:hint="Introduce contraseña"
             android:inputType="textPassword">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,13 +77,13 @@
         android:background="@drawable/design_boton_loginuser"
         android:layout_marginTop="30dp"
         android:layout_below="@id/text_contraseña"
-        android:id="@+id/login_user">
+        android:id="@+id/login_nuevo_usuario">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Log in"
+            android:text="Creo nuevo user"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             ></TextView>
@@ -97,33 +92,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Olvide mi contraseña"
+        android:textAlignment="center"
+        android:text="Ya tienes un usuario ?"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_below="@+id/login_nuevo_user"
         android:textColor="@color/black"
-        android:layout_below="@+id/login_user"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"></TextView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/design_boton_loginuser"
-        android:layout_marginBottom="30dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/login_nuevo_user">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Nuevo usuario"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            ></TextView>
-    </RelativeLayout>
-
+        android:id="@+id/tengo_un_usuario"
+        android:layout_marginTop="70dp"></TextView>
 
 </RelativeLayout>

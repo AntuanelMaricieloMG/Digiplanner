@@ -18,20 +18,8 @@ public class TablasFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        TablasViewModel tablasViewModel =
-                new ViewModelProvider(this).get(TablasViewModel.class);
-
-        fragmentT = FragmentTablasBinding.inflate(inflater, container, false);
-        View root = fragmentT.getRoot();
-        //elementos del layout
-        final TextView textView = fragmentT.textTablas;
-        tablasViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        return null;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        fragmentT = null;
-    }
+
 }
