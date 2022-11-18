@@ -51,7 +51,7 @@ dependencies {
     //dependencias ,firebase google analytics
     implementation 'com.google.firebase:firebase-analytics'
     //mas dependencias firebase
-    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-auth:11.0.2'
     implementation 'com.google.firebase:firebase-firestore'
 
 }
