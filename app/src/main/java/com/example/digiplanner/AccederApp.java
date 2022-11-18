@@ -8,6 +8,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+
 import org.w3c.dom.Text;
 
 public class AccederApp extends MainActivity{
@@ -19,6 +21,7 @@ public class AccederApp extends MainActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.principal_acceder_app);
         getSupportActionBar().hide();
 

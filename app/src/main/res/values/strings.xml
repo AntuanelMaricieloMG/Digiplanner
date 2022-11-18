@@ -21,5 +21,8 @@
     <string name="title_activity_tablas_fragment">TablasFragment</string>
     <string name="title_activity_cuenta_personal_fragment">CuentaPersonalFragment</string>
     <string name="foto_cuenta" />
+    <string name="title_activity_acceder" />
+    <string name="title_activity_accedernuevousuario" />
+    <string name="title_activity_accederolvidadousuario" />
 
 </resources>

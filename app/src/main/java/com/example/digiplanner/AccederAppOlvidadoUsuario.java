@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+
 public class AccederAppOlvidadoUsuario extends AppCompatActivity {
 
     EditText olvideContraseña;
@@ -19,6 +21,7 @@ public class AccederAppOlvidadoUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.principal_acceder_app_olvidadousuario);
         getSupportActionBar().hide();
         olvideContraseña = findViewById(R.id.text_olvide_contraseña);

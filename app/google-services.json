@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "428798644619",
-    "project_id": "bionic-region-297322",
-    "storage_bucket": "bionic-region-297322.appspot.com"
+    "project_number": "567891607381",
+    "project_id": "app-digiplanner",
+    "storage_bucket": "app-digiplanner.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:428798644619:android:f613f880ff19e60296df8e",
+        "mobilesdk_app_id": "1:567891607381:android:6c252b36055b0abd6479dc",
         "android_client_info": {
-          "package_name": "com.example.nomsale3"
+          "package_name": "com.example.digiplanner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "428798644619-no39c87dmte0br3fbe1tfh7si48lgsb8.apps.googleusercontent.com",
+          "client_id": "567891607381-qautad3ql69gc1gvcgtsjrt3bnf8mr9h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAXrNWXvD58DIFSfNXQyAngwDNVr1WJIj4"
+          "current_key": "AIzaSyCklYvACo0kr7TcCawpyk5SoSV-cqdEjcQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "428798644619-no39c87dmte0br3fbe1tfh7si48lgsb8.apps.googleusercontent.com",
+              "client_id": "567891607381-qautad3ql69gc1gvcgtsjrt3bnf8mr9h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
