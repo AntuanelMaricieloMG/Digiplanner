@@ -13,35 +13,12 @@
         android:theme="@style/Theme.Digiplanner"
         tools:targetApi="31">
 
+
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AccederAppNuevoUsuario"
-            android:label="@string/title_activity_accedernuevousuario"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AccederAppOlvidadoUsuario"
-            android:label="@string/title_activity_accederolvidadousuario"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AccederApp"
             android:label="@string/title_activity_acceder"
             android:exported="true"
-            >
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

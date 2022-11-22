@@ -5,125 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.postits.PostitsFragment"
-    android:background="#D1BAED">
+    android:background="#D1BAED"
+    >
 
-    <RelativeLayout
-        android:id="@+id/linea_centro_notas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:layout_constraintBottom_toTopOf="parent"
-        tools:ignore="MissingConstraints">
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="150dp"
-        android:layout_above="@+id/linea_centro_notas"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/text_inicio1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hola"
-            android:textSize="42dp"
-            />
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/linea_centro_notas"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/text_email"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id = "@+id/text_login_email"
-            android:hint="Introduce email"
-            android:inputType="textEmailAddress">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linea_centro_notas"
-        android:layout_marginTop="10dp"
-        android:id="@+id/text_contraseña"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        tools:ignore="MissingConstraints"
-        app:passwordToggleEnabled="true">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id = "@+id/text_login_contraseña"
-            android:hint="Introduce contraseña"
-            android:inputType="textPassword">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/design_boton_loginuser"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/text_contraseña"
-        android:id="@+id/login_user">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Log in"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            ></TextView>
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Olvide mi contraseña"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/login_user"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"></TextView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/design_boton_loginuser"
-        android:layout_marginBottom="30dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/boton_crea_postit"
+        android:layout_width="103dp"
+        android:layout_height="89dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/login_nuevo_user">
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="245dp"
+        android:layout_marginTop="514dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
+        android:layout_marginBottom="127dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Nuevo usuario"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            ></TextView>
-    </RelativeLayout>
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListaDinamica"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scrollbars="vertical">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>
