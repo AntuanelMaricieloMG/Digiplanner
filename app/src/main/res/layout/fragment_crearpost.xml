@@ -5,18 +5,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.postits.CrearPost">
 
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="165dp"
-        android:layout_height="143dp"
+
+    <EditText
+        android:id="@+id/creartitulodelanota"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="1dp"
+        android:hint="titulo"
+        android:paddingTop="12dp"
+        android:textStyle="bold">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/crearelcontenidodelanota"
+        android:layout_width="410dp"
+        android:layout_height="410dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="234dp"
-        android:layout_marginEnd="205dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="207dp"
+        android:gravity="top|left"
+        android:hint="conteniddo post"
+        android:padding="15dp" />
 
-        android:layout_marginBottom="354dp"
-        android:text="PRUEBA" />
+    <Button
+        android:id="@+id/boton_guardar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="123dp"
+        android:text="Guardar" />
+
+
 </RelativeLayout>

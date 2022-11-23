@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -22,12 +23,13 @@ import com.example.digiplanner.R;
 import com.example.digiplanner.databinding.FragmentPostitsBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class PostitsFragment extends Fragment {
 
-    FloatingActionButton botonCreaPostit;
-
+    Button botonCreaPostit;
+    FirebaseAuth firebaseAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -42,6 +44,8 @@ public class PostitsFragment extends Fragment {
 
         //ID
         botonCreaPostit = view.findViewById(R.id.boton_crea_postit);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         botonCreaPostit.setOnClickListener(new View.OnClickListener() {
             @Override

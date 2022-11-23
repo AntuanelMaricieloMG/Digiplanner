@@ -15,10 +15,36 @@
 
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_acceder"
+            android:label="@string/title_activity_main"
+            android:exported="true"
+            tools:ignore="MissingClass"
+            android:name="com.example.digiplanner.MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.digiplanner.AccederAppNuevoUsuario"
+            android:label="@string/title_activity_accedernuevousuario"
             android:exported="true"
             tools:ignore="MissingClass">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.digiplanner.AccederAppOlvidadoUsuario"
+            android:label="@string/title_activity_accederolvidadousuario"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.digiplanner.AccederApp"
+            android:label="@string/title_activity_acceder"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
