@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digiplanner.AccederApp;
 import com.example.digiplanner.MainActivity;
@@ -24,12 +25,18 @@ import com.example.digiplanner.databinding.FragmentPostitsBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class PostitsFragment extends Fragment {
 
+    RecyclerView listaDePost;
     Button botonCreaPostit;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAutenticacion;
+    FirebaseUser firebaseUsuario;
+    FirebaseFirestore firebaseFirestore;
+    FirestoreRecycleAdapter<PostitRecyclerView,PositViewModel>adaptadorParaPostFirebase;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -44,8 +51,10 @@ public class PostitsFragment extends Fragment {
 
         //ID
         botonCreaPostit = view.findViewById(R.id.boton_crea_postit);
-
-        firebaseAuth = FirebaseAuth.getInstance();
+        //FIREBASE
+        firebaseAutenticacion = FirebaseAuth.getInstance();
+        firebaseUsuario = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         botonCreaPostit.setOnClickListener(new View.OnClickListener() {
             @Override

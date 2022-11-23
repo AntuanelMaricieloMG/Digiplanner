@@ -33,8 +33,8 @@ public class CrearPost extends Fragment {
 
     EditText titulocreado,contenidocreado;
     Button botonguardar;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
+    FirebaseUser firebaseUsuario;
+    FirebaseAuth firebaseAutenticacion;
     FirebaseFirestore firebaseFirestore;
 
     @Override
@@ -55,9 +55,9 @@ public class CrearPost extends Fragment {
 
 
         //Base de datos
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAutenticacion=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUsuario=FirebaseAuth.getInstance().getCurrentUser();
 
         botonguardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,7 @@ public class CrearPost extends Fragment {
                 else
                 {
                     //En firebase se guardara el post
-                    DocumentReference documentReference = firebaseFirestore.collection("posts").document(firebaseUser.getUid()).collection("mi post").document();
+                    DocumentReference documentReference = firebaseFirestore.collection("posts").document(firebaseUsuario.getUid()).collection("mi post").document();
                     Map<String,Object> post = new HashMap<>();
                     post.put("titulo",title);
                     post.put("contenido",content);
