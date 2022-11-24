@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //Firebase bom
     implementation platform('com.google.firebase:firebase-bom:31.0.3')
-
     //dependencias ,servicios de google classpath
     implementation 'com.google.gms:google-services:4.3.14'
     //dependencias ,firebase google analytics
@@ -55,5 +54,7 @@ dependencies {
     //mas dependencias firebase
 
     implementation 'com.google.firebase:firebase-firestore'
-
+    implementation 'com.firebaseui:firebase-ui-firestore:4.1.0'
+    implementation 'com.google.firebase:firebase-core:19.0.2'
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.0'
 }

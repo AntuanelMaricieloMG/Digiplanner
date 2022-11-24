@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D1BAED">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius ="5dp"
+        app:cardMaxElevation="5dp"
+        android:id="@+id/postLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/postlinearlayout"
+            android:orientation="vertical"
+            android:background="#E6CD2D">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#2196F3">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/crearposttitulo"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Tu "
+                    android:layout_weight="1">
+                </TextView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/pop"
+                    android:layout_weight="0"
+                    android:src="@drawable/ic_baseline_more_vert_24">
+
+                </ImageView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/crearpostcontenido"
+                android:paddingBottom="20dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:text="codigo">
+
+            </TextView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

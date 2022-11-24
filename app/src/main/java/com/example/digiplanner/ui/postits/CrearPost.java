@@ -55,6 +55,7 @@ public class CrearPost extends Fragment {
 
 
         //Base de datos
+
         firebaseAutenticacion=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseUsuario=FirebaseAuth.getInstance().getCurrentUser();
@@ -103,12 +104,6 @@ public class CrearPost extends Fragment {
         return view;
     }
 
-    public boolean onOptionItemSelected(@NonNull MenuItem item){
-        if(item.getItemId()==android.R.id.home)
-        {
-            getActivity().onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
 }

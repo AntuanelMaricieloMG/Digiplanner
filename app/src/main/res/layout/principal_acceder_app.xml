@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id = "@+id/text_login_email"
-            android:hint="Introduce email"
+            android:hint="@string/introduce_email"
             android:inputType="textEmailAddress">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id = "@+id/text_login_contraseña"
-            android:hint="Introduce contraseña"
+            android:hint="@string/introduce_contrase_a"
             android:inputType="textPassword">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -90,21 +90,20 @@
             android:layout_marginStart="8dp"
             android:text="Log in"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            ></TextView>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Olvide mi contraseña"
+        android:text="@string/olvide_mi_contrase_a"
         android:id="@+id/olvide_mi_contraseña"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textColor="@color/black"
         android:layout_below="@+id/login_usuario"
         android:layout_marginTop="10dp"
-        android:textAlignment="center"></TextView>
+        android:textAlignment="center" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -122,8 +121,7 @@
             android:layout_marginStart="8dp"
             android:text="Nuevo usuario"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            ></TextView>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 

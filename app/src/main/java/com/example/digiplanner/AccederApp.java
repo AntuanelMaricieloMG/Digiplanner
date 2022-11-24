@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.digiplanner.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,12 +21,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
-public class AccederApp extends MainActivity{
+public class AccederApp extends AppCompatActivity {
 
     EditText emailentrar,contraseñaentrar;
     RelativeLayout entrar, crearCuenta;
     TextView olvideContraseña;
     FirebaseAuth firebaseAutenticacion;
+    FirebaseUser firebaseUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,16 +43,8 @@ public class AccederApp extends MainActivity{
         olvideContraseña = findViewById(R.id.olvide_mi_contraseña);
 
         firebaseAutenticacion = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUsuario = firebaseAutenticacion.getCurrentUser();
-        if(firebaseUsuario!=null)
-        {
-            finish();
-            startActivity(new Intent(AccederApp.this,MainActivity.class));
-        }
-        else
-        {
+        firebaseUsuario = firebaseAutenticacion.getCurrentUser();
 
-        }
 
         crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +70,10 @@ public class AccederApp extends MainActivity{
                 {
                     Toast.makeText(getApplicationContext(),"Rellena los campos", Toast.LENGTH_SHORT).show();
                 }
+
                 else
                 {
+
                     firebaseAutenticacion.signInWithEmailAndPassword(email,constraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -91,22 +87,37 @@ public class AccederApp extends MainActivity{
                             }
                         }
                     });
-                    startActivity(new Intent(AccederApp.this,MainActivity.class));
+
                 }
             }
         });
+/*
+       if(firebaseUsuario!=null)
+        {
+            finish();
+            startActivity(new Intent(AccederApp.this,MainActivity.class));
+        }
+
+        else
+        {
+
+        }
+*/
     }
     private void verificaionEmail()
     {
         FirebaseUser firebaseUsuario = firebaseAutenticacion.getCurrentUser();
-        if(firebaseUsuario.isEmailVerified()==true )
+        if(firebaseUsuario.isEmailVerified() == true )
         {
+            Toast.makeText(getApplicationContext(),"listo",Toast.LENGTH_SHORT).show();
             finish();
             startActivity(new Intent(AccederApp.this, MainActivity.class));
+
         }
         else
         {
-
+            Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+            firebaseAutenticacion.signOut();
         }
     }
 }

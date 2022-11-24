@@ -24,5 +24,9 @@
     <string name="title_activity_acceder" />
     <string name="title_activity_accedernuevousuario" />
     <string name="title_activity_accederolvidadousuario" />
+    <string name="title_activity_accederappp" />
+    <string name="introduce_email">Introduce email</string>
+    <string name="introduce_contrase_a">Introduce contraseña</string>
+    <string name="olvide_mi_contrase_a">Olvide mi contraseña</string>
 
 </resources>

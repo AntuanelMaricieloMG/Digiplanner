@@ -15,8 +15,9 @@
         android:layout_width="72dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="147dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="304dp"
+        android:layout_marginBottom="148dp"
         android:text="Listo">
 
     </Button>
@@ -29,11 +30,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:scrollbars="vertical">
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:scrollbars="vertical"
+        android:background="#D2EDBA">
 
     </androidx.recyclerview.widget.RecyclerView>
 

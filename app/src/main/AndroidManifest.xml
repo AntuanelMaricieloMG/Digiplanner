@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Digiplanner"
-        tools:targetApi="31">
-
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true"
+        >
 
         <activity
             android:label="@string/title_activity_main"
@@ -24,27 +25,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.digiplanner.AccederAppNuevoUsuario"
-            android:label="@string/title_activity_accedernuevousuario"
-            android:exported="true"
-            tools:ignore="MissingClass">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name="com.example.digiplanner.AccederAppOlvidadoUsuario"
             android:label="@string/title_activity_accederolvidadousuario"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.example.digiplanner.AccederAppNuevoUsuario"
+            android:label="@string/title_activity_accederolvidadousuario"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name="com.example.digiplanner.AccederApp"
             android:label="@string/title_activity_acceder"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,6 +55,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
     </application>
 
 </manifest>
