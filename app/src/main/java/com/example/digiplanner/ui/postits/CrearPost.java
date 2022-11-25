@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ public class CrearPost extends Fragment {
 
     EditText titulocreado,contenidocreado;
     Button botonguardar;
+    ProgressBar procesocircular;
     FirebaseUser firebaseUsuario;
     FirebaseAuth firebaseAutenticacion;
     FirebaseFirestore firebaseFirestore;
@@ -53,6 +55,7 @@ public class CrearPost extends Fragment {
         botonguardar = view.findViewById(R.id.boton_guardar);
         titulocreado = view.findViewById(R.id.creartitulodelanota);
         contenidocreado = view.findViewById(R.id.crearelcontenidodelanota);
+        procesocircular = view.findViewById(R.id.progress_crear);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,6 +76,7 @@ public class CrearPost extends Fragment {
                 }
                 else
                 {
+                    procesocircular.setVisibility(View.VISIBLE);
                     //En firebase se guardara el post
                     DocumentReference documentReference = firebaseFirestore.collection("posts").document(firebaseUsuario.getUid()).collection("mi post").document();
                     Map<String,Object> post = new HashMap<>();
@@ -83,18 +87,18 @@ public class CrearPost extends Fragment {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(getActivity().getApplicationContext(),"post creado",Toast.LENGTH_SHORT).show();
+                            procesocircular.setVisibility(View.VISIBLE);
                             PostitsFragment postitsfragment= new PostitsFragment();
                             FragmentTransaction transaction = getFragmentManager().beginTransaction();
                             transaction.replace(R.id.nav_host_fragment_activity_main, postitsfragment);
                             transaction.commit();
-
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity().getApplicationContext(),"no se pudo crear, error",Toast.LENGTH_SHORT).show();
-
+                            procesocircular.setVisibility(View.VISIBLE);
                         }
                     });
                 }

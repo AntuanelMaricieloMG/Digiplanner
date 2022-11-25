@@ -1,27 +1,26 @@
 package com.example.digiplanner.ui.postits;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.widget.Toolbar;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.digiplanner.R;
-import com.example.digiplanner.databinding.FragmentHomeBinding;
-import com.example.digiplanner.ui.AdaptadorGridDias;
 
 public class EditarPost  extends Fragment {
 
-    private FragmentHomeBinding fragmentH;
-    GridView grid;
-    Context context;
-    String[] numero = {"1","2","3","4","5","6","7"};
-
+    EditText tituloEditarpost;
+    EditText contenidoEditarpost;
+    Button botonGuardarEditarpost;
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -33,10 +32,24 @@ public class EditarPost  extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        grid = (GridView) view.findViewById(R.id.gridViewMes);
-        AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
-        grid.setAdapter(adaptador);
 
+        //ID
+        tituloEditarpost = view.findViewById(R.id.titulo_editarpost);
+        contenidoEditarpost = view.findViewById(R.id.contenido_editarpost);
+        botonGuardarEditarpost = view.findViewById(R.id.boton_guardar_editarpost);
+        toolbar = view.findViewById(R.id.toolbar_editarpost);
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return view;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+        {
+            requireActivity().onBackPressed();
+            //super.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

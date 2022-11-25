@@ -17,10 +17,11 @@
             android:text="titulo aqui"
             android:id="@+id/titulo_caracteristicaspostit"/>
     </androidx.appcompat.widget.Toolbar>
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top|left"
+        android:hint="Contenido del post"
         android:layout_below="@+id/toolbar_caracteristicaspostit"
         android:padding="15dp"
         android:id="@+id/contenido_caracteristicaspostit"/>

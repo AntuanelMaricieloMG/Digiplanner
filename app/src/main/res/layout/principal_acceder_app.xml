@@ -7,6 +7,7 @@
     tools:context=".AccederApp"
     android:background="#D1BAED">
 
+
     <RelativeLayout
         android:id="@+id/linea_centro"
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
         tools:ignore="MissingConstraints">
 
     </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +35,16 @@
             android:text="Hola"
             android:textSize="42dp"
             />
+
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/progress_acceder"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

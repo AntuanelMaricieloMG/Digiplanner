@@ -1,9 +1,11 @@
 package com.example.digiplanner;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +30,9 @@ public class AccederApp extends AppCompatActivity {
     TextView olvideContraseña;
     FirebaseAuth firebaseAutenticacion;
     FirebaseUser firebaseUsuario;
+    ProgressBar procesocircular;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -36,11 +40,15 @@ public class AccederApp extends AppCompatActivity {
         setContentView(R.layout.principal_acceder_app);
         getSupportActionBar().hide();
 
+        //ID
         emailentrar = findViewById(R.id.text_login_email);
         contraseñaentrar = findViewById(R.id.text_login_contraseña);
         entrar = findViewById(R.id.login_usuario);
         crearCuenta = findViewById(R.id.crear_nuevo_user);
         olvideContraseña = findViewById(R.id.olvide_mi_contraseña);
+        procesocircular = findViewById(R.id.progress_acceder);
+
+
 
         firebaseAutenticacion = FirebaseAuth.getInstance();
         firebaseUsuario = firebaseAutenticacion.getCurrentUser();
@@ -73,7 +81,7 @@ public class AccederApp extends AppCompatActivity {
 
                 else
                 {
-
+                    procesocircular.setVisibility(View.VISIBLE);
                     firebaseAutenticacion.signInWithEmailAndPassword(email,constraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -84,6 +92,7 @@ public class AccederApp extends AppCompatActivity {
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"No existe",Toast.LENGTH_SHORT).show();
+                                procesocircular.setVisibility(View.VISIBLE);
                             }
                         }
                     });
@@ -118,6 +127,7 @@ public class AccederApp extends AppCompatActivity {
         {
             Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
             firebaseAutenticacion.signOut();
+            procesocircular.setVisibility(View.VISIBLE);
         }
     }
 }

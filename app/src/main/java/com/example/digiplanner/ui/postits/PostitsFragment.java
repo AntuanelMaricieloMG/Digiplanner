@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,11 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -31,9 +37,12 @@ import com.example.digiplanner.R;
 import com.example.digiplanner.databinding.FragmentPostitsBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -48,6 +57,7 @@ public class PostitsFragment extends Fragment {
     FirebaseFirestore firebaseFirestore;
     FirestoreRecyclerAdapter<PostitRecyclerView,PositViewHolder>adaptadorParaPostitFirebase;
     StaggeredGridLayoutManager ordenarRecycleView;
+    Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -81,12 +91,76 @@ public class PostitsFragment extends Fragment {
         Query query = firebaseFirestore.collection("posts").document(firebaseUsuario.getUid()).collection("mi post").orderBy("titulo",Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<PostitRecyclerView> listaDeTodo = new FirestoreRecyclerOptions.Builder<PostitRecyclerView>().setQuery(query,PostitRecyclerView.class).build();
         adaptadorParaPostitFirebase = new FirestoreRecyclerAdapter<PostitRecyclerView,PositViewHolder>(listaDeTodo){
-
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             protected void onBindViewHolder(@NonNull PositViewHolder positViewHolder, int i,@NonNull PostitRecyclerView postitRecyclerView) {
+
+                ImageView menutresopciones = positViewHolder.itemView.findViewById(R.id.menudelospostits);
+                //int color = getRandomColor();
+                //positViewHolder.postlinearlayout.setBackgroundColor(positViewHolder.itemView.getResources().getColor(color,null));
                 positViewHolder.crearposttitulo.setText(postitRecyclerView.getTitulo());
                 positViewHolder.crearpostcontenido.setText(postitRecyclerView.getContenido());
+                String iddocumento = adaptadorParaPostitFirebase.getSnapshots().getSnapshot(i).getId();
+
+                positViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CaracteristicasPostit caracteristicas= new CaracteristicasPostit();
+                        bundle = new Bundle();
+                        bundle.putString("Titulo", postitRecyclerView.getTitulo());
+                        bundle.putString("Titulo", postitRecyclerView.getContenido());
+                        bundle.putString("Postid", iddocumento);
+                        caracteristicas.setArguments(bundle);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment_activity_main, caracteristicas);
+                        transaction.commit();
+                    }
+                });
+
+                menutresopciones.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+                        popupMenu.setGravity(Gravity.END);
+                        popupMenu.getMenu().add("Editar").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                EditarPost editarPost= new EditarPost();
+                                bundle.putString("Titulo", postitRecyclerView.getTitulo());
+                                bundle.putString("Contenido", postitRecyclerView.getContenido());
+                                bundle.putString("Postid", iddocumento);
+                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                transaction.replace(R.id.nav_host_fragment_activity_main, editarPost);
+                                transaction.commit();
+                                return false;
+                            }
+                        });
+                        popupMenu.getMenu().add("Eliminar").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+
+                                DocumentReference documentoReferenciado = firebaseFirestore.collection("posts").document(firebaseUsuario.getUid()).collection("mi post").document(iddocumento);
+                                documentoReferenciado.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(getContext(),"Postit eliminado",Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getContext(),"Fallo al borrar el Postit ",Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+
+                                return false;
+                            }
+                        });
+                        popupMenu.show();
+                    }
+                });
             }
+
             @NonNull
             @Override
             public PositViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -127,7 +201,7 @@ public class PostitsFragment extends Fragment {
         super.onStop();
         if(adaptadorParaPostitFirebase!=null)
         {
-            adaptadorParaPostitFirebase.startListening();
+            adaptadorParaPostitFirebase.stopListening();
         }
     }
     @Override

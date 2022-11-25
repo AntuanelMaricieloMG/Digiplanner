@@ -46,6 +46,18 @@
         android:hint="conteniddo post"
         android:padding="15dp" />
 
+    <ProgressBar
+        android:id="@+id/progress_crear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="369dp"
+        android:visibility="invisible" />
+
     <Button
         android:id="@+id/boton_guardar"
         android:layout_width="wrap_content"
