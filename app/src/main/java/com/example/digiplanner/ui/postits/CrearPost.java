@@ -49,11 +49,13 @@ public class CrearPost extends Fragment {
         View view = inflater.inflate(R.layout.fragment_crearpost,container,false);
 
         //ID
+        Toolbar toolbar= view.findViewById(R.id.toolbar_post);
         botonguardar = view.findViewById(R.id.boton_guardar);
         titulocreado = view.findViewById(R.id.creartitulodelanota);
         contenidocreado = view.findViewById(R.id.crearelcontenidodelanota);
 
-
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Base de datos
 
         firebaseAutenticacion=FirebaseAuth.getInstance();
@@ -104,6 +106,13 @@ public class CrearPost extends Fragment {
         return view;
     }
 
-
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home)
+        {
+           requireActivity().onBackPressed();
+           //super.onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

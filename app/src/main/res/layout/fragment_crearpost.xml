@@ -6,20 +6,28 @@
     tools:context=".ui.postits.CrearPost"
     android:background="#D1BAED">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_post"
+        android:layout_width="380dp"
+        android:layout_height="91dp">
 
-    <EditText
-        android:id="@+id/creartitulodelanota"
-        android:layout_width="match_parent"
-        android:layout_height="111dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="1dp"
-        android:hint="titulo"
-        android:paddingTop="12dp"
-        android:textStyle="bold">
+        <EditText
+            android:id="@+id/creartitulodelanota"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="1dp"
+            android:hint="titulo"
+            android:paddingTop="12dp"
+            android:textStyle="bold">
 
-    </EditText>
+        </EditText>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
 
     <EditText
         android:id="@+id/crearelcontenidodelanota"
@@ -40,10 +48,8 @@
 
     <Button
         android:id="@+id/boton_guardar"
-
         android:layout_width="wrap_content"
         android:layout_height="82dp"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

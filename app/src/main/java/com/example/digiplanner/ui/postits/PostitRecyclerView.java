@@ -2,31 +2,31 @@ package com.example.digiplanner.ui.postits;
 
 public class PostitRecyclerView {
 
-    String tituloPost;
-    String contenidoPost;
+    String titulo;
+    String contenido;
 
-    public PostitRecyclerView(String tituloPost,String contenidoPost){
-        this.tituloPost=tituloPost;
-        this.contenidoPost=contenidoPost;
+    public PostitRecyclerView(String titulo,String contenido){
+        this.titulo=titulo;
+        this.contenido=contenido;
     }
 
     public PostitRecyclerView(){
 
     }
 
-    public String getTituloPost() {
-        return tituloPost;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTituloPost(String tituloPost) {
-        this.tituloPost = tituloPost;
+    public void setTituloPost(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getContenidoPost() {
-        return contenidoPost;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setContenidoPost(String contenidoPost) {
-        this.contenidoPost = contenidoPost;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 }

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#D1BAED">
+    android:background="#D1BAED"
+    android:padding="15dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
                 android:background="#2196F3">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id = "@+id/crearposttitulo"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
@@ -38,7 +39,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/pop"
+                    android:id="@+id/menudelospostits"
                     android:layout_weight="0"
                     android:src="@drawable/ic_baseline_more_vert_24">
 

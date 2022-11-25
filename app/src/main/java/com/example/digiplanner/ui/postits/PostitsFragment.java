@@ -1,10 +1,15 @@
 package com.example.digiplanner.ui.postits;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -73,10 +78,15 @@ public class PostitsFragment extends Fragment {
             }
         });
 
-        Query query = firebaseFirestore.collection("postit").document(firebaseUsuario.getUid()).collection("mi postit").orderBy("titulo",Query.Direction.ASCENDING);
-        FirestoreRecyclerOptions<PostitRecyclerView> listaDeLosPostit = new FirestoreRecyclerOptions.Builder<PostitRecyclerView>().setQuery(query,PostitRecyclerView.class).build();
-        adaptadorParaPostitFirebase = new FirestoreRecyclerAdapter<PostitRecyclerView,PositViewHolder>(listaDeLosPostit){
+        Query query = firebaseFirestore.collection("posts").document(firebaseUsuario.getUid()).collection("mi post").orderBy("titulo",Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<PostitRecyclerView> listaDeTodo = new FirestoreRecyclerOptions.Builder<PostitRecyclerView>().setQuery(query,PostitRecyclerView.class).build();
+        adaptadorParaPostitFirebase = new FirestoreRecyclerAdapter<PostitRecyclerView,PositViewHolder>(listaDeTodo){
 
+            @Override
+            protected void onBindViewHolder(@NonNull PositViewHolder positViewHolder, int i,@NonNull PostitRecyclerView postitRecyclerView) {
+                positViewHolder.crearposttitulo.setText(postitRecyclerView.getTitulo());
+                positViewHolder.crearpostcontenido.setText(postitRecyclerView.getContenido());
+            }
             @NonNull
             @Override
             public PositViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -84,15 +94,10 @@ public class PostitsFragment extends Fragment {
                 return new PositViewHolder(view);
             }
 
-            @Override
-            protected void onBindViewHolder(@NonNull PositViewHolder positViewHolder, int i,@NonNull PostitRecyclerView postitRecyclerView) {
-                positViewHolder.crearposttitulo.setText(postitRecyclerView.getTituloPost());
-                positViewHolder.crearpostcontenido.setText(postitRecyclerView.getContenidoPost());
-            }
         };
 
         listaDePost.setHasFixedSize(true);
-        ordenarRecycleView = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        ordenarRecycleView = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         listaDePost.setLayoutManager(ordenarRecycleView);
         listaDePost.setAdapter(adaptadorParaPostitFirebase);
 
@@ -125,5 +130,21 @@ public class PostitsFragment extends Fragment {
             adaptadorParaPostitFirebase.startListening();
         }
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menuopciones_postitsfragment,menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.salir:
+                firebaseAutenticacion.signOut();
+                getActivity().onBackPressed();
+                startActivity(new Intent(getContext(),MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
