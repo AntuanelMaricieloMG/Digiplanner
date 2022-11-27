@@ -1,6 +1,8 @@
 package com.example.digiplanner;
 
 import android.os.Bundle;
+import android.view.WindowManager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -20,6 +22,8 @@ private ActivityMainBinding activityMainBinding;
         FirebaseApp.initializeApp(this);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
+        getSupportActionBar().hide();
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

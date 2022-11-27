@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class AccederAppNuevoUsuario extends AppCompatActivity {
 
     private EditText nuevoEmail,nuevaContraseña;

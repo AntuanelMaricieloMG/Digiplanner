@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.digiplanner.MainActivity;
 import com.example.digiplanner.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,6 +40,7 @@ public class CrearPost extends Fragment {
     FirebaseUser firebaseUsuario;
     FirebaseAuth firebaseAutenticacion;
     FirebaseFirestore firebaseFirestore;
+    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -51,14 +54,13 @@ public class CrearPost extends Fragment {
         View view = inflater.inflate(R.layout.fragment_crearpost,container,false);
 
         //ID
-        Toolbar toolbar= view.findViewById(R.id.toolbar_post);
+        toolbar= view.findViewById(R.id.toolbar_post);
         botonguardar = view.findViewById(R.id.boton_guardar);
         titulocreado = view.findViewById(R.id.creartitulodelanota);
         contenidocreado = view.findViewById(R.id.crearelcontenidodelanota);
         procesocircular = view.findViewById(R.id.progress_crear);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Base de datos
 
         firebaseAutenticacion=FirebaseAuth.getInstance();
