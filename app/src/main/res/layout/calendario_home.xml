@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/calendar_layout"
+    android:orientation="vertical"
+    android:background="#D1BAED">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/boton_Volver"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="c" />
+
+        <TextView
+            android:id="@+id/MesCalendario"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Current Date"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/boton_Siguiente"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="i" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="m"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="t"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="w"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="ti"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="f"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="sn"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="#00E0FE"
+            android:gravity="center"
+            android:text="st"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gridViewMes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="7" />
+
+
+</LinearLayout>
