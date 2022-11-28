@@ -20,7 +20,6 @@ import com.example.digiplanner.ui.AdaptadorGridDias;
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding fragmentH;
     GridView grid;
     Context context;
     String[] numero = {"1","2","3","4","5","6","7"};
@@ -36,9 +35,9 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        grid = (GridView) view.findViewById(R.id.gridViewMes);
-        AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
-        grid.setAdapter(adaptador);
+        //grid = (GridView) view.findViewById(R.id.gridViewMes);
+        //AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
+        //grid.setAdapter(adaptador);
 
         return view;
     }

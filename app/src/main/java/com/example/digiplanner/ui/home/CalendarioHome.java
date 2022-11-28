@@ -1,26 +1,25 @@
 package com.example.digiplanner.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
-import android.os.Bundle;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.example.digiplanner.R;
-import com.example.digiplanner.databinding.FragmentHomeBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
-
-import org.w3c.dom.ls.LSException;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class CalendarioHome extends LinearLayout {
 
@@ -35,11 +35,14 @@ public class CalendarioHome extends LinearLayout {
     TextView FechaMes;
     GridView gridMes;
     Context context;
-    static final int CALENDAR_DAYS = 42;
+    static final int todosDiasCalendario = 42;
     Calendar calendario = Calendar.getInstance(Locale.ENGLISH);
+    AlertDialog alertDialog;
+    SQliteopenhelper sqliteopenhelper;
+    AdaptadorGridDias adaptadorGridDias;
 
     List<Date> fecha = new ArrayList<>();
-    List<EventoCalendario> calendar = new ArrayList<>();
+    List<EventoCalendario> ListaDeEventos = new ArrayList<>();
 
     SimpleDateFormat formatofecha = new SimpleDateFormat("MMMM yyyy",Locale.ENGLISH);
     SimpleDateFormat formatofechames = new SimpleDateFormat("MMMM" , Locale.ENGLISH);
@@ -61,8 +64,8 @@ public class CalendarioHome extends LinearLayout {
         botonVolver = view.findViewById(R.id.boton_Volver);
         FechaMes = view.findViewById(R.id.MesCalendario);
         gridMes = (GridView) view.findViewById(R.id.gridViewMes);
-        //AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
-        //gridMes.setAdapter(adaptador);
+
+
         botonVolver.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,9 +81,87 @@ public class CalendarioHome extends LinearLayout {
             }
         });
 
+        gridMes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setCancelable(true);
+                View vistaNuevoEvento = LayoutInflater.from(parent.getContext()).inflate(R.layout.calendario_nuevoevento,parent,false);
+                //View griddiasvista = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_dias,parent,false);
+
+                //ID
+                @SuppressLint({"MissingInflatedId", "LocalSuppress"}) EditText EventName = vistaNuevoEvento.findViewById(R.id.grid_espacio);
+                TextView EventTime = vistaNuevoEvento.findViewById(R.id.texto_horaseleccionada);
+                Button SetTime = vistaNuevoEvento.findViewById(R.id.boton_selectorhora);
+                Button AddEvent = vistaNuevoEvento.findViewById(R.id.boton_eventocreado);
+                SetTime.setOnClickListener(v -> {
+                    Calendar calendar = Calendar.getInstance();
+                    int horas = calendar.get(Calendar.HOUR_OF_DAY);
+                    int minutos = calendar.get(Calendar.MINUTE);
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(vistaNuevoEvento.getContext(), androidx.appcompat.R.style.Theme_AppCompat_Dialog
+                            , (view1, hourOfDay, minute) -> {
+                        Calendar cal = Calendar.getInstance();
+                        cal.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        cal.set(Calendar.MINUTE, minute);
+                        cal.setTimeZone(TimeZone.getDefault());
+                        SimpleDateFormat hformate = new SimpleDateFormat("K:mm a",Locale.ENGLISH);
+                        String event_Time = hformate.format(cal.getTime());
+                        EventTime.setText(event_Time);
+
+                    },horas,minutos,false);
+                    timePickerDialog.show();
+                });
+                final String date = formatofecha.format(fecha.get(position));
+                final String mes = formatofechames.format(fecha.get(position));
+                final String año = formatofechaaño.format(fecha.get(position));
+
+                AddEvent.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GuardarEvento(EventName.getText().toString(),EventTime.getText().toString(),date,mes,año);
+                        Setup();
+                        alertDialog.dismiss();
+                    }
+                });
+                builder.setView(vistaNuevoEvento);
+                alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
+
+
     }
+
+    public CalendarioHome(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    private void GuardarEvento(String evento,String tiempo,String fecha,String mes,String año){
+        sqliteopenhelper = new SQliteopenhelper(context);
+        SQLiteDatabase database = sqliteopenhelper.getWritableDatabase();
+        sqliteopenhelper.SaveEvent(evento,tiempo,fecha,mes,año,database);
+        sqliteopenhelper.close();
+        Toast.makeText(context,"Guardado correctamente" , Toast.LENGTH_SHORT).show();
+    }
+
     private void Setup(){
         String dateFechaCalendario = formatofecha.format(calendario.getTime());
         FechaMes.setText(dateFechaCalendario);
+        fecha.clear();
+        Calendar calendarioMuestraMes = (Calendar) calendario.clone();
+        calendarioMuestraMes.set(Calendar.DAY_OF_MONTH,1);
+        int primerDiaMes = calendarioMuestraMes.get(Calendar.DAY_OF_WEEK)-1;
+        calendarioMuestraMes.add(Calendar.DAY_OF_MONTH, -primerDiaMes);
+
+        while(fecha.size() < todosDiasCalendario){
+            fecha.add(calendarioMuestraMes.getTime());
+            calendarioMuestraMes.add(Calendar.DAY_OF_MONTH , 1);
+        }
+
+        adaptadorGridDias = new AdaptadorGridDias(context,fecha,calendario,ListaDeEventos);
+        gridMes.setAdapter(adaptadorGridDias);
+        //AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
+        //gridMes.setAdapter(adaptador);
     }
 }

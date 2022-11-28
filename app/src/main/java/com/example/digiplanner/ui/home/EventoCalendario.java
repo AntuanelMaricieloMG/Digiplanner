@@ -34,11 +34,11 @@ public class EventoCalendario extends Fragment {
         return YEAR;
     }
 
-    public void setEVENT(String EVENTOS) {
+    public void setEVENTOS(String EVENTOS) {
         this.EVENTOS = EVENTOS;
     }
 
-    public void setTIME(String TIEMPO) {
+    public void setTIEMPO(String TIEMPO) {
         this.TIEMPO = TIEMPO;
     }
 

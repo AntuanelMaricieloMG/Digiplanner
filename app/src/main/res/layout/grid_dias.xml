@@ -9,7 +9,10 @@
         android:layout_width="35dp"
         android:layout_height="wrap_content"
         android:text="Dia" />
-
+    <TextView
+        android:id="@+id/grid_espacio"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

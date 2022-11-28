@@ -10,8 +10,12 @@ import androidx.annotation.Nullable;
 
 public class SQliteopenhelper extends SQLiteOpenHelper {
 
-    private final static String CREATE_EVENTS_TABLE = "create table " + Estructura.EVENT_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + Estructura.EVENT + "TEXT , " + Estructura.TIME + "TEXT, " + Estructura.DATE + "TEXT, " + Estructura.MONTH + "TEXT, "
+    private final static String CREATE_EVENTS_TABLE = "create table "
+            + Estructura.EVENT_TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + Estructura.EVENTOS + "TEXT , "
+            + Estructura.TIEMPO + "TEXT, "
+            + Estructura.DATE + "TEXT, "
+            + Estructura.MONTH + "TEXT, "
             + Estructura.YEAR + "TEXT)";
     private static final String DROP_EVENTS_TABLE = "DROP TABLE IF EXISTS " + Estructura.EVENT_TABLE_NAME;
 
@@ -32,21 +36,21 @@ public class SQliteopenhelper extends SQLiteOpenHelper {
 
     public void SaveEvent(String event, String time, String date, String month , String year , SQLiteDatabase database){
         ContentValues contentValue= new ContentValues();
-        contentValue.put(Estructura.EVENT , event);
-        contentValue.put(Estructura.EVENT , time);
-        contentValue.put(Estructura.EVENT , date);
-        contentValue.put(Estructura.EVENT , month);
-        contentValue.put(Estructura.EVENT , year);
+        contentValue.put(Estructura.EVENTOS , event);
+        contentValue.put(Estructura.EVENTOS , time);
+        contentValue.put(Estructura.EVENTOS , date);
+        contentValue.put(Estructura.EVENTOS , month);
+        contentValue.put(Estructura.EVENTOS , year);
         database.insert(Estructura.EVENT_TABLE_NAME, null, contentValue);
     }
     public Cursor ReadEvents(String date ,SQLiteDatabase database){
-        String [] Projections = {Estructura.EVENT, Estructura.TIME , Estructura.DATE , Estructura.MONTH , Estructura.YEAR};
+        String [] Projections = {Estructura.EVENTOS, Estructura.TIEMPO , Estructura.DATE , Estructura.MONTH , Estructura.YEAR};
         String selection = Estructura.DATE + "=?";
         String [] SelectionArgs = {date};
         return database.query(Estructura.EVENT_TABLE_NAME, Projections , selection, SelectionArgs,null,null, null);
     }
     public Cursor ReadEventsperMonth(String month , String year, SQLiteDatabase database){
-        String [] Projections = {Estructura.EVENT, Estructura.TIME , Estructura.DATE , Estructura.MONTH , Estructura.YEAR};
+        String [] Projections = {Estructura.EVENTOS, Estructura.TIEMPO , Estructura.DATE , Estructura.MONTH , Estructura.YEAR};
         String selection = Estructura.MONTH + "=? and " + Estructura.YEAR + "=?";
         String [] SelectionArgs = {month,year};
         return database.query(Estructura.EVENT_TABLE_NAME, Projections , selection, SelectionArgs,null,null, null);
