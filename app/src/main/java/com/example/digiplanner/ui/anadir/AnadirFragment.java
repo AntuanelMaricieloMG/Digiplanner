@@ -29,15 +29,12 @@ import java.util.List;
 
 public class AnadirFragment extends Fragment {
     Context context;
-    RecyclerView listaTareasCasa;
-    List<String> elementosTareaCasa;
+    RecyclerView listaTareas;
+    List<String> elementosTarea;
     List<Integer> images;
     TextView textviewtituloTareas;
-    TextView textviewtituloTareasCasa;
 
-    RecyclerView listaTareasMudanza;
-    List<String> elementosTareaMudanza;
-    TextView textviewtituloTareasMudanza;
+
 
 
     @Override
@@ -49,39 +46,46 @@ public class AnadirFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_anadir,container,false);
-        //Tareas de casa id
-        listaTareasCasa = view.findViewById(R.id.lista_tareas_casa);
+        //Tareas de casa ID
+        listaTareas = view.findViewById(R.id.lista_tareas);
         textviewtituloTareas = view.findViewById(R.id.textView_añadirtitulo1);
-        textviewtituloTareasCasa = view.findViewById(R.id.textView_añadirtitulo2);
-
-        //Lista tareas de casa
-        elementosTareaCasa = new ArrayList<>();
+        elementosTarea = new ArrayList<>();
         images = new ArrayList<>();
-        elementosTareaCasa.add("Limpieza");
-        elementosTareaCasa.add("Documentos");
+        elementosTarea.add("Limpieza");
+        elementosTarea.add("Documentos");
+        elementosTarea.add("Muebles");
+        elementosTarea.add("Decoración");
+        elementosTarea.add("Compras");
+        elementosTarea.add("Cita medica");
+        elementosTarea.add("Medicación");
+        elementosTarea.add("Documentación");
+        elementosTarea.add("Eventos familiares");
+        elementosTarea.add("Examen");
+        elementosTarea.add("Tareas");
+        elementosTarea.add("Trabajos");
+        elementosTarea.add("Links importantes");
+        elementosTarea.add("Links informacion");
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
+        images.add(R.drawable.rata);
         images.add(R.drawable.rata);
         images.add(R.drawable.rata);
 
-        AdaptadorGridTareas adaptador = new AdaptadorGridTareas(getActivity(),elementosTareaCasa,images);
+        AdaptadorGridTareas adaptador = new AdaptadorGridTareas(getActivity(),elementosTarea,images);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
-        listaTareasCasa.setLayoutManager(gridLayoutManager);
-        listaTareasCasa.setAdapter(adaptador);
+        listaTareas.setLayoutManager(gridLayoutManager);
+        listaTareas.setAdapter(adaptador);
 
 
-        //Tareas de Mudanza id
-        listaTareasMudanza = view.findViewById(R.id.lista_tareas_mudanza);
-        textviewtituloTareasMudanza = view.findViewById(R.id.textView_añadirtitulo3);
-        elementosTareaMudanza = new ArrayList<>();
-        elementosTareaMudanza.add("Muebles");
-        elementosTareaMudanza.add("Decoración");
-        elementosTareaMudanza.add("Compras");
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-
-        AdaptadorGridTareas adaptador2 = new AdaptadorGridTareas(getActivity(),elementosTareaMudanza,images);
-        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
-        listaTareasMudanza.setLayoutManager(gridLayoutManager2);
-        listaTareasMudanza.setAdapter(adaptador2);
 
         return view;
     }

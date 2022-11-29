@@ -15,9 +15,13 @@ import androidx.annotation.Nullable;
 import com.example.digiplanner.R;
 import com.example.digiplanner.ui.home.EventoCalendario;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AdaptadorGridDias extends ArrayAdapter {
 
@@ -60,7 +64,21 @@ public class AdaptadorGridDias extends ArrayAdapter {
         }
 
         TextView Day_number = view.findViewById(R.id.grid_numero_dia);
+        TextView numeroDeEvento = view.findViewById(R.id.grid_espacio);
         Day_number.setText(String.valueOf(DayNo));
+        /*Calendar CalendarioDeEventos = Calendar.getInstance();
+        ArrayList<String> arrayList = new ArrayList<>();
+        for(int i=0;i<eventos.size();i++)
+        {
+            CalendarioDeEventos.setTime(FechaString(eventos.get(i).getDATE()));
+            if(DayNo == CalendarioDeEventos.get(Calendar.DAY_OF_MONTH)
+               && displayMonth == CalendarioDeEventos.get(Calendar.MONTH)+1
+               && displayYear == CalendarioDeEventos.get(Calendar.YEAR))
+            {
+                arrayList.add(eventos.get(i).getEVENTOS());
+                numeroDeEvento.setText(arrayList.size()+"eventos");
+            }
+        }*/
 
         return view;
     }
@@ -80,8 +98,19 @@ public class AdaptadorGridDias extends ArrayAdapter {
     public Object getItem(int position) {
         return super.getItem(position);
     }
-
-
+/*
+    private Date FechaString(String eventDate){
+        SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-ddd", Locale.ENGLISH);
+        Date diaFecha = null;
+        try
+        {
+            diaFecha = format.parse(eventDate);
+        }catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        return diaFecha;
+    }*/
     /*Context context;
     String[] numeroDia;
     TextView textDia;

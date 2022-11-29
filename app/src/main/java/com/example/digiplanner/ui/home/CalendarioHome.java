@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.AttributeSet;
@@ -40,6 +41,7 @@ public class CalendarioHome extends LinearLayout {
     AlertDialog alertDialog;
     SQliteopenhelper sqliteopenhelper;
     AdaptadorGridDias adaptadorGridDias;
+    String m ,y;
 
     List<Date> fecha = new ArrayList<>();
     List<EventoCalendario> ListaDeEventos = new ArrayList<>();
@@ -58,6 +60,11 @@ public class CalendarioHome extends LinearLayout {
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.calendario_home,this);
+
+        //m = formatofechames.format(calendario.getTime());
+        // y = formatofechaaño.format(calendario.getTime());
+        //Toast.makeText(context,m,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context,y,Toast.LENGTH_SHORT).show();
 
         //ID
         botonSiguiente = view.findViewById(R.id.boton_Siguiente);
@@ -94,6 +101,7 @@ public class CalendarioHome extends LinearLayout {
                 TextView EventTime = vistaNuevoEvento.findViewById(R.id.texto_horaseleccionada);
                 Button SetTime = vistaNuevoEvento.findViewById(R.id.boton_selectorhora);
                 Button AddEvent = vistaNuevoEvento.findViewById(R.id.boton_eventocreado);
+
                 SetTime.setOnClickListener(v -> {
                     Calendar calendar = Calendar.getInstance();
                     int horas = calendar.get(Calendar.HOUR_OF_DAY);
@@ -107,6 +115,7 @@ public class CalendarioHome extends LinearLayout {
                         SimpleDateFormat hformate = new SimpleDateFormat("K:mm a",Locale.ENGLISH);
                         String event_Time = hformate.format(cal.getTime());
                         EventTime.setText(event_Time);
+                        Toast.makeText(context,event_Time,Toast.LENGTH_SHORT).show();
 
                     },horas,minutos,false);
                     timePickerDialog.show();
@@ -118,9 +127,14 @@ public class CalendarioHome extends LinearLayout {
                 AddEvent.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        Toast.makeText(context,"boton funciona evento nuevo",Toast.LENGTH_SHORT).show();
+                        /*
                         GuardarEvento(EventName.getText().toString(),EventTime.getText().toString(),date,mes,año);
+
                         Setup();
-                        alertDialog.dismiss();
+                        alertDialog.dismiss();*/
+
                     }
                 });
                 builder.setView(vistaNuevoEvento);
@@ -153,7 +167,7 @@ public class CalendarioHome extends LinearLayout {
         calendarioMuestraMes.set(Calendar.DAY_OF_MONTH,1);
         int primerDiaMes = calendarioMuestraMes.get(Calendar.DAY_OF_WEEK)-1;
         calendarioMuestraMes.add(Calendar.DAY_OF_MONTH, -primerDiaMes);
-
+        //EventosPorMes(m,y);
         while(fecha.size() < todosDiasCalendario){
             fecha.add(calendarioMuestraMes.getTime());
             calendarioMuestraMes.add(Calendar.DAY_OF_MONTH , 1);
@@ -161,7 +175,25 @@ public class CalendarioHome extends LinearLayout {
 
         adaptadorGridDias = new AdaptadorGridDias(context,fecha,calendario,ListaDeEventos);
         gridMes.setAdapter(adaptadorGridDias);
-        //AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
-        //gridMes.setAdapter(adaptador);
+
     }
+
+    /*private void EventosPorMes(String month,String year){
+        ListaDeEventos.clear();
+        sqliteopenhelper = new SQliteopenhelper(context);
+        SQLiteDatabase basededatos = sqliteopenhelper.getReadableDatabase();
+        Cursor cursor = sqliteopenhelper.ReadEventsperMonth(month,year,basededatos);
+        while (cursor.moveToNext())
+        {
+            @SuppressLint("Range") String eleccionDeEvento = cursor.getString(cursor.getColumnIndex(Estructura.EVENTOS));
+            @SuppressLint("Range") String eleccionDeTiempo = cursor.getString(cursor.getColumnIndex(Estructura.TIEMPO));
+            @SuppressLint("Range") String eleccionDeFecha = cursor.getString(cursor.getColumnIndex(Estructura.DATE));
+            @SuppressLint("Range") String eleccionDeMes = cursor.getString(cursor.getColumnIndex(Estructura.MONTH));
+            @SuppressLint("Range") String eleccionDeAño = cursor.getString(cursor.getColumnIndex(Estructura.YEAR));
+            EventoCalendario eventoss = new EventoCalendario(eleccionDeEvento,eleccionDeTiempo,eleccionDeFecha,eleccionDeMes,eleccionDeAño);
+            ListaDeEventos.add(eventoss);
+        }
+        cursor.close();
+        sqliteopenhelper.close();
+    }*/
 }

@@ -16,7 +16,7 @@ public class SQliteopenhelper extends SQLiteOpenHelper {
             + Estructura.TIEMPO + "TEXT, "
             + Estructura.DATE + "TEXT, "
             + Estructura.MONTH + "TEXT, "
-            + Estructura.YEAR + "TEXT)";
+            + Estructura.YEAR + "TEXT )";
     private static final String DROP_EVENTS_TABLE = "DROP TABLE IF EXISTS " + Estructura.EVENT_TABLE_NAME;
 
     public SQliteopenhelper(@Nullable Context context) {
@@ -34,13 +34,13 @@ public class SQliteopenhelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void SaveEvent(String event, String time, String date, String month , String year , SQLiteDatabase database){
+    public void SaveEvent(String eventos, String tiempo, String date, String month , String year , SQLiteDatabase database){
         ContentValues contentValue= new ContentValues();
-        contentValue.put(Estructura.EVENTOS , event);
-        contentValue.put(Estructura.EVENTOS , time);
-        contentValue.put(Estructura.EVENTOS , date);
-        contentValue.put(Estructura.EVENTOS , month);
-        contentValue.put(Estructura.EVENTOS , year);
+        contentValue.put(Estructura.EVENTOS , eventos);
+        contentValue.put(Estructura.TIEMPO , tiempo);
+        contentValue.put(Estructura.DATE , date);
+        contentValue.put(Estructura.MONTH , month);
+        contentValue.put(Estructura.YEAR , year);
         database.insert(Estructura.EVENT_TABLE_NAME, null, contentValue);
     }
     public Cursor ReadEvents(String date ,SQLiteDatabase database){
