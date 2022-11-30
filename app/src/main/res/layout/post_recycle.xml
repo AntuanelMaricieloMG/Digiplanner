@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#D1BAED"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/background2">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,12 +19,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/postlinearlayout"
             android:orientation="vertical"
-            android:background="#E6CD2D">
+            android:background="#E0CDFA">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="#2196F3">
+                android:background="#CA97E6">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

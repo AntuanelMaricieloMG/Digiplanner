@@ -115,7 +115,7 @@ public class CalendarioHome extends LinearLayout {
                         SimpleDateFormat hformate = new SimpleDateFormat("K:mm a",Locale.ENGLISH);
                         String event_Time = hformate.format(cal.getTime());
                         EventTime.setText(event_Time);
-                        Toast.makeText(context,event_Time,Toast.LENGTH_SHORT).show();
+
 
                     },horas,minutos,false);
                     timePickerDialog.show();

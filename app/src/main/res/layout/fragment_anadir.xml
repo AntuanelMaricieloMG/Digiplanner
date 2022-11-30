@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.anadir.AnadirFragment"
-    android:background="#D1BAED">
+    android:background="@drawable/background2">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +25,7 @@ import com.example.digiplanner.databinding.FragmentAnadirBinding;
 import com.example.digiplanner.databinding.FragmentHomeBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.example.digiplanner.ui.AdaptadorGridTareas;
+import com.example.digiplanner.ui.postits.PostitsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +88,6 @@ public class AnadirFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);
         listaTareas.setLayoutManager(gridLayoutManager);
         listaTareas.setAdapter(adaptador);
-
 
 
         return view;

@@ -34,7 +34,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:scrollbars="vertical"
-        android:background="#D2EDBA">
+        android:background="@drawable/background2">
 
     </androidx.recyclerview.widget.RecyclerView>
 

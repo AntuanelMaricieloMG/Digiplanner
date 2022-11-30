@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AccederApp"
-    android:background="#D1BAED">
+    android:background="@drawable/background13">
 
 
     <RelativeLayout
@@ -32,7 +32,10 @@
             android:id="@+id/text_inicio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hola"
+            android:layout_gravity="center"
+            android:text="Digiplanner"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:textSize="42dp"
             />
 
@@ -60,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id = "@+id/text_login_email"
-            android:hint="@string/introduce_email"
+            android:hint="Email"
             android:inputType="textEmailAddress">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id = "@+id/text_login_contraseña"
-            android:hint="@string/introduce_contrase_a"
+            android:hint="Contraseña"
             android:inputType="textPassword">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +102,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Log in"
+            android:text="Entrar"
+            android:textStyle="bold"
+            android:textSize="20dp"
             android:layout_centerInParent="true"
             android:textColor="@color/white" />
     </RelativeLayout>
@@ -111,7 +116,9 @@
         android:id="@+id/olvide_mi_contraseña"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15dp"
         android:layout_below="@+id/login_usuario"
         android:layout_marginTop="10dp"
         android:textAlignment="center" />
@@ -130,6 +137,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
             android:text="Nuevo usuario"
             android:layout_centerInParent="true"
             android:textColor="@color/white" />

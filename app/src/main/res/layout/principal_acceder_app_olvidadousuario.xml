@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background12">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,33 +27,46 @@
             android:layout_height="wrap_content"
             android:text="Olvide usuario"
             android:textSize="42dp"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/text_olvide_contraseña"
+        android:layout_width="341dp"
+        android:layout_height="48dp"
+        android:layout_above="@+id/linea_centro3"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_above="@+id/linea_centro3"
-        android:id="@+id/text_olvide_contraseña"
-        android:hint="Indica el correo"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:hint="Indica el correo del usuario">
 
     </EditText>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Click"
+
+    <RelativeLayout
         android:id="@+id/boton_recuperar_contraseña"
+        android:layout_width="347dp"
+        android:layout_height="43dp"
         android:layout_below="@+id/linea_centro3"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="312dp"
+        android:background="@drawable/design_boton_loginuser">
 
-    </Button>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:text="Recuperar contraseña"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +74,9 @@
         android:text="volver al inicio"
         android:id="@+id/olvidecontraseña_vuelveatras"
         android:layout_marginBottom="30dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15dp"
         android:textAlignment="center">
 
     </TextView>

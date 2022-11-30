@@ -7,16 +7,17 @@
     android:color="@color/blue">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/boton_tareas"
         android:layout_width="match_parent"
-        android:layout_height="31dp"
+        android:layout_height="55dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="Elementos" />
 </LinearLayout>

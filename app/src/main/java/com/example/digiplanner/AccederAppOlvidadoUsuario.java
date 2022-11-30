@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import java.util.Objects;
 public class AccederAppOlvidadoUsuario extends AppCompatActivity {
 
     EditText olvideContraseña;
-    Button botonRecuperarContraseña;
+    RelativeLayout botonRecuperarContraseña;
     TextView olvideVuelveatras;
     FirebaseAuth firebaseAutenticacion;
     @Override
