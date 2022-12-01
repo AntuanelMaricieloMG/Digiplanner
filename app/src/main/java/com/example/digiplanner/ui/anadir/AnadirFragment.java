@@ -21,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.digiplanner.R;
-import com.example.digiplanner.databinding.FragmentAnadirBinding;
-import com.example.digiplanner.databinding.FragmentHomeBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.example.digiplanner.ui.AdaptadorGridTareas;
 import com.example.digiplanner.ui.postits.PostitsFragment;
@@ -69,15 +67,15 @@ public class AnadirFragment extends Fragment {
         elementosTarea.add("Trabajos");
         elementosTarea.add("Links importantes");
         elementosTarea.add("Links informacion");
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
+        images.add(R.drawable.ic_baseline_cleaning_services_24);
+        images.add(R.drawable.ic_baseline_document_scanner_24);
+        images.add(R.drawable.ic_baseline_warehouse_24);
+        images.add(R.drawable.ic_baseline_desk_24);
+        images.add(R.drawable.ic_baseline_shopping_bag_24);
+        images.add(R.drawable.ic_baseline_note_add_24);
+        images.add(R.drawable.ic_baseline_local_pharmacy_24);
+        images.add(R.drawable.ic_baseline_note_alt_24);
+        images.add(R.drawable.ic_baseline_groups_24);
         images.add(R.drawable.rata);
         images.add(R.drawable.rata);
         images.add(R.drawable.rata);

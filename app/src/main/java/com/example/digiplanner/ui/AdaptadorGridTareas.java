@@ -1,31 +1,20 @@
 package com.example.digiplanner.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.digiplanner.AccederApp;
-import com.example.digiplanner.AccederAppOlvidadoUsuario;
 import com.example.digiplanner.R;
-import com.example.digiplanner.ui.anadir.AdaptadorFragment;
 import com.example.digiplanner.ui.anadir.AnadirTareaCaracteristicas;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.List;
 

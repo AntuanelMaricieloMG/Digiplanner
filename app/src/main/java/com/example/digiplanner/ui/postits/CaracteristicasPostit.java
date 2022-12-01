@@ -29,7 +29,7 @@ public class CaracteristicasPostit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        View view = inflater.inflate(R.layout.fragment_caracteristicaspostit,container,false);
         //ID
         tituloCaracteristicaspostit = view.findViewById(R.id.titulo_caracteristicaspostit);
         contenidoCaracteristicaspostit = view.findViewById(R.id.contenido_caracteristicaspostit);

@@ -61,10 +61,7 @@ public class CalendarioHome extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.calendario_home,this);
 
-        //m = formatofechames.format(calendario.getTime());
-        // y = formatofechaaño.format(calendario.getTime());
-        //Toast.makeText(context,m,Toast.LENGTH_SHORT).show();
-        //Toast.makeText(context,y,Toast.LENGTH_SHORT).show();
+
 
         //ID
         botonSiguiente = view.findViewById(R.id.boton_Siguiente);
@@ -94,7 +91,6 @@ public class CalendarioHome extends LinearLayout {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setCancelable(true);
                 View vistaNuevoEvento = LayoutInflater.from(parent.getContext()).inflate(R.layout.calendario_nuevoevento,parent,false);
-                //View griddiasvista = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_dias,parent,false);
 
                 //ID
                 @SuppressLint({"MissingInflatedId", "LocalSuppress"}) EditText EventName = vistaNuevoEvento.findViewById(R.id.grid_espacio);

@@ -6,23 +6,24 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteX="60dp"
     tools:layout_editor_absoluteY="342dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/backgroundd">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.anadir.AnadirFragment"
-    android:background="@drawable/background2">
+    android:background="@drawable/backgroundd">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_tareas"
-        android:layout_width="411dp"
-        android:layout_height="593dp"
+        android:layout_width="409dp"
+        android:layout_height="678dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
+        android:background="@drawable/backgroundd"
         app:layout_constraintTop_toBottomOf="@+id/textView_añadirtitulo1"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />

@@ -20,6 +20,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 public class PostitsFragment extends Fragment {
 
     RecyclerView listaDePost;
-    Button botonCreaPostit;
+    RelativeLayout botonCreaPostit;
     FirebaseAuth firebaseAutenticacion;
     FirebaseUser firebaseUsuario;
     FirebaseFirestore firebaseFirestore;

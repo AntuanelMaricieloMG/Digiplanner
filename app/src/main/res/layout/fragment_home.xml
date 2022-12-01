@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment"
-    android:background="#D1BAED">
+    android:background="#00BCD4">
 
     <com.example.digiplanner.ui.home.CalendarioHome
         android:layout_width="match_parent"

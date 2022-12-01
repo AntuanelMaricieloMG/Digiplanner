@@ -5,45 +5,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context=".ui.anadir.AnadirTareaCaracteristicas"
-    android:background="@drawable/background2">
+    android:background="@drawable/backgroundd">
+
+    <TextView
+        android:layout_width="372dp"
+        android:layout_height="57dp"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:id="@+id/titulo_anadirtarea"/>
 
     <EditText
-        android:id="@+id/nueva_tarea"
+        android:id="@+id/escribe_nuevatarea"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Escribe el nuevo evento"
         android:inputType="textShortMessage"
         android:layout_margin="30dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="381dp"
+        android:layout_height="200dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/boton_selectorhoratarea"
-            android:layout_width="58dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/texto_horaseleccionada"
-            android:layout_width="324dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:text="00:00" />
+            <Button
+                android:id="@+id/boton_selectorhoratarea"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:text="Hora" />
 
+            <Button
+                android:id="@+id/boton_selectorfechatarea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="fecha" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/texto_horaseleccionadatarea"
+                android:layout_width="324dp"
+                android:layout_height="52dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="00:00" />
+
+            <TextView
+                android:id="@+id/texto_fechaseleccionadatarea"
+                android:layout_width="324dp"
+                android:layout_height="132dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/boton_creartarea"
+        android:id="@+id/boton_creartareanueva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
+        android:layout_margin="30dp"
         android:text="listo" />
 
 </LinearLayout>

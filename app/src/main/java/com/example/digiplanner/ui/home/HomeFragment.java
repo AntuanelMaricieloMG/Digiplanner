@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.digiplanner.R;
-import com.example.digiplanner.databinding.FragmentHomeBinding;
 import com.example.digiplanner.ui.AdaptadorGridDias;
 
 public class HomeFragment extends Fragment {
