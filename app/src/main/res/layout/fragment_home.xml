@@ -14,4 +14,10 @@
         android:id="@+id/custom_calendario_home">
     </com.example.digiplanner.ui.home.CalendarioHome>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_lista"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="450dp"/>
+
 </RelativeLayout>

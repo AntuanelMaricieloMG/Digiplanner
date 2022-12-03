@@ -29,11 +29,20 @@ public class AdaptadorGridTareas extends RecyclerView.Adapter<AdaptadorGridTarea
     LayoutInflater inflater;
 
 
+    public AdaptadorGridTareas(){
+
+    }
+
     public AdaptadorGridTareas(Context context,List<String> nombreElementos, List<Integer> images ){
         this.nombreElementos=nombreElementos;
         this.images=images;
         this.inflater = LayoutInflater.from(context);
     }
+
+    public AdaptadorGridTareas(Context context) {
+        this.context = context;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

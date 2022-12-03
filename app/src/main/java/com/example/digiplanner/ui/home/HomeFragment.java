@@ -13,16 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digiplanner.R;
 import com.example.digiplanner.ui.AdaptadorGridDias;
+import com.example.digiplanner.ui.AdaptadorRecycler;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class HomeFragment extends Fragment {
 
-    GridView grid;
-    Context context;
-    String[] numero = {"1","2","3","4","5","6","7"};
-
+    AdaptadorRecycler adaptadorRecycler;
+    RecyclerView recyclerLista;
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -34,10 +39,32 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
-        //grid = (GridView) view.findViewById(R.id.gridViewMes);
-        //AdaptadorGridDias adaptador= new AdaptadorGridDias(getActivity(),numero);
-        //grid.setAdapter(adaptador);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+
+        recyclerLista = view.findViewById(R.id.recyclerview_lista);
+        recyclerLista.setLayoutManager(new LinearLayoutManager(getContext()));
+        Query query = firebaseFirestore.collection("evento");
+        FirestoreRecyclerOptions<Evento> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Evento>().setQuery(query, Evento.class).build();
+
+        adaptadorRecycler = new AdaptadorRecycler(firestoreRecyclerOptions);
+        adaptadorRecycler.notifyDataSetChanged();
+        recyclerLista.setAdapter(adaptadorRecycler);
+
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adaptadorRecycler.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adaptadorRecycler.stopListening();
     }
 }

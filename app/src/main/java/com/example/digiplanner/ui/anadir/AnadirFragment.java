@@ -76,11 +76,11 @@ public class AnadirFragment extends Fragment {
         images.add(R.drawable.ic_baseline_local_pharmacy_24);
         images.add(R.drawable.ic_baseline_note_alt_24);
         images.add(R.drawable.ic_baseline_groups_24);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
-        images.add(R.drawable.rata);
+        images.add(R.drawable.ic_baseline_library_books_24);
+        images.add(R.drawable.ic_baseline_self_improvement_24);
+        images.add(R.drawable.ic_baseline_home_work_24);
+        images.add(R.drawable.ic_baseline_checklist_rtl_24);
+        images.add(R.drawable.ic_baseline_dvr_24);
 
         AdaptadorGridTareas adaptador = new AdaptadorGridTareas(getActivity(),elementosTarea,images);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false);

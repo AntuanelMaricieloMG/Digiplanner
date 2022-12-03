@@ -127,8 +127,27 @@ public class AnadirTareaCaracteristicas extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        fechaSeleccionadatarea.setText(dayOfMonth+ "/"+(month+1)+"/"+year);
+                        String format_dia,format_mes;
+                        if(dayOfMonth < 10)
+                        {
+                            format_dia = "0" + String.valueOf(dayOfMonth);
 
+                        }else
+                        {
+                            format_dia = String.valueOf(dayOfMonth);
+                        }
+
+                        int monthofcalendar = month +1;
+
+                        if(monthofcalendar <10)
+                        {
+                            format_mes = "0" + String.valueOf(monthofcalendar);
+                        }else
+                        {
+                            format_mes = String.valueOf(monthofcalendar);
+                        }
+
+                        fechaSeleccionadatarea.setText(format_dia+ "/"+format_mes+"/"+year);
                     }
                 },dia,mes,year);
                 datePickerDialog.show();
@@ -168,12 +187,12 @@ public class AnadirTareaCaracteristicas extends Fragment {
                 String fs = fechaSeleccionadatarea.getText().toString().trim();
 
                 Map<String,Object> map = new HashMap<>();
-                map.put("Tipo",tt);
-                map.put("Nombre",tn);
-                map.put("Fecha",fs);
+                map.put("nombre",tt);
+                map.put("hora",tn);
+                map.put("fecha",fs);
 
 
-                firebaseFirestore.collection("pet").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                firebaseFirestore.collection("evento").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
 
@@ -186,6 +205,7 @@ public class AnadirTareaCaracteristicas extends Fragment {
                 });
 
                 HomeFragment calendario= new HomeFragment();
+                //calendario.obtenerdatos();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment_activity_main, calendario);
                 transaction.commit();

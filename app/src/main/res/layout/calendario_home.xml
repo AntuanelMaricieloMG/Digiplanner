@@ -126,8 +126,9 @@
     <GridView
         android:id="@+id/gridViewMes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="280dp"
         android:numColumns="7" />
+
 
 
 </LinearLayout>

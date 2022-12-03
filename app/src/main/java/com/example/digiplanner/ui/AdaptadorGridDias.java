@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.digiplanner.R;
 import com.example.digiplanner.ui.home.EventoCalendario;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +32,7 @@ public class AdaptadorGridDias extends ArrayAdapter {
     Calendar fechaMes;
     List<EventoCalendario> eventos;
     LayoutInflater inflater;
+    String date,mes,año;
 
     public AdaptadorGridDias(@NonNull Context context, List<Date> dates, Calendar fechaMes , List<EventoCalendario> eventos) {
         super(context,R.layout.grid_dias );
@@ -66,7 +70,10 @@ public class AdaptadorGridDias extends ArrayAdapter {
         TextView Day_number = view.findViewById(R.id.grid_numero_dia);
         TextView numeroDeEvento = view.findViewById(R.id.grid_espacio);
         Day_number.setText(String.valueOf(DayNo));
-        /*Calendar CalendarioDeEventos = Calendar.getInstance();
+        //PRUEBA guarda evento en lista array
+        /*Toast.makeText(getContext(),date+mes+año,Toast.LENGTH_SHORT).show();
+
+        Calendar CalendarioDeEventos = Calendar.getInstance();
         ArrayList<String> arrayList = new ArrayList<>();
         for(int i=0;i<eventos.size();i++)
         {
@@ -79,6 +86,7 @@ public class AdaptadorGridDias extends ArrayAdapter {
                 numeroDeEvento.setText(arrayList.size()+"eventos");
             }
         }*/
+
 
         return view;
     }
@@ -98,7 +106,12 @@ public class AdaptadorGridDias extends ArrayAdapter {
     public Object getItem(int position) {
         return super.getItem(position);
     }
-/*
+
+    public void  Guardar(String mes, String date, String año){
+        this.mes= mes;
+        this.date = date;
+        this.año = año;
+    }
     private Date FechaString(String eventDate){
         SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-ddd", Locale.ENGLISH);
         Date diaFecha = null;
@@ -110,7 +123,7 @@ public class AdaptadorGridDias extends ArrayAdapter {
             e.printStackTrace();
         }
         return diaFecha;
-    }*/
+
     /*Context context;
     String[] numeroDia;
     TextView textDia;
@@ -151,4 +164,4 @@ public class AdaptadorGridDias extends ArrayAdapter {
         return convertView;
 
     }*/
-}
+}}
