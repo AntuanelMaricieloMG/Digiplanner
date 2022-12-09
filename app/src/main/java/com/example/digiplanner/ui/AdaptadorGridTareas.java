@@ -1,5 +1,7 @@
 package com.example.digiplanner.ui;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +12,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.digiplanner.R;
 import com.example.digiplanner.ui.anadir.AnadirTareaCaracteristicas;
+import com.example.digiplanner.ui.home.HomeFragment;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import java.security.AccessController;
 import java.util.List;
 
 public class AdaptadorGridTareas extends RecyclerView.Adapter<AdaptadorGridTareas.ViewHolder>  {
@@ -27,7 +33,7 @@ public class AdaptadorGridTareas extends RecyclerView.Adapter<AdaptadorGridTarea
     int numero;
     String numeroString;
     LayoutInflater inflater;
-
+    AppCompatActivity activity;
 
     public AdaptadorGridTareas(){
 
@@ -78,20 +84,26 @@ public class AdaptadorGridTareas extends RecyclerView.Adapter<AdaptadorGridTarea
                     numeroString = String.valueOf(numero);
                     Toast.makeText(v.getContext(),numeroString,Toast.LENGTH_SHORT).show();
 
-                    AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                    activity = (AppCompatActivity)v.getContext();
 
                     AnadirTareaCaracteristicas f = new AnadirTareaCaracteristicas();
+
+
+                    f.setTextNumero(numero);
                     FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.nav_host_fragment_activity_main, f);
+
+                    transaction.addToBackStack(null);
                     transaction.commit();
 
-                    /*AdaptadorFragment af = new AdaptadorFragment();
-                    af.onClickPosition(numero);
-                    //startActivity(new Intent(AdaptadorFragment.this, AdaptadorFragment.class));
-                    AnadirTareaCaracteristicas postitsfragment= new AnadirTareaCaracteristicas();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.nav_host_fragment_activity_main, postitsfragment);
-                    transaction.commit();*/
+                    //Fragment fragment = AnadirTareaCaracteristicas.new;
+                    //abrir fragment
+                    //HomeFragment calendario= new HomeFragment();
+                    //calendario.obtenerdatos();
+                    //FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    //transaction.replace(R.id.nav_host_fragment_activity_main, calendario);
+                    //transaction.commit();
+                    //sustituir fragment
                 }
             });
         }

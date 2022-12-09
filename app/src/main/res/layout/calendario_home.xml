@@ -1,134 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/calendar_layout"
     android:orientation="vertical"
-    android:background="@drawable/backgroundd">
+    android:background="@drawable/grid_dias_design">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E2D8F3"
+        android:background="@drawable/linearlayout_calendario_design"
         android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_margin="10dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_Volver"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="c" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/linearlayout_calendario_design"
+            android:src="@drawable/ic_baseline_keyboard_double_arrow_left_24"/>
 
         <TextView
             android:id="@+id/MesCalendario"
-            android:layout_width="209dp"
+            android:layout_width="233dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_weight="3"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="Current Date"
-            android:textSize="18sp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_Siguiente"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="i" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/linearlayout_calendario_design"
+            android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_700"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp">
+        >
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="m"
+            android:text="L"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="t"
+            android:text="Ma"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="w"
+            android:text="X"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="ti"
+            android:text="J"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="f"
+            android:text="V"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="sn"
+            android:text="S"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:background="#00E0FE"
+            android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="st"
+            android:text="D"
             android:textStyle="bold" />
     </LinearLayout>
 
     <GridView
         android:id="@+id/gridViewMes"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="335dp"
+        android:layout_margin="10dp"
         android:numColumns="7" />
-
 
 
 </LinearLayout>

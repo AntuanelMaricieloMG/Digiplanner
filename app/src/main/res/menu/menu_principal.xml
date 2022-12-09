@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_cuentapersonal"
-        android:icon="@drawable/persona"
+        android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="@string/title_cuentapersonal"/>
 
     <item
@@ -13,17 +13,17 @@
 
     <item
         android:id="@+id/navigation_anadir"
-        android:icon="@drawable/mas"
+        android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:title="@string/title_anadir"/>
 
     <item
         android:id="@+id/navigation_postits"
-        android:icon="@drawable/post"
+        android:icon="@drawable/ic_baseline_sticky_note_2_24"
         android:title="@string/title_postits"/>
 
     <item
-        android:id="@+id/navigation_tablas"
+        android:id="@+id/navigation_lista"
         android:icon="@drawable/tabla"
-        android:title="@string/title_tablas"/>
+        android:title="@string/title_lista"/>
 
 </menu>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.example.digiplanner.ui.home.CalendarioHome;
 import com.example.digiplanner.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -43,7 +45,7 @@ public class AnadirTareaCaracteristicas extends Fragment {
 
     TextView tituloTarea,horaSeleccionadatarea,fechaSeleccionadatarea ;
     EditText tareaNueva;
-    Button elegirHora,elegirFecha,tareaCreada;
+    RelativeLayout elegirHora,elegirFecha,tareaCreada;
     int numero,dia,mes,year,hora,minutos;
     String numerodetarea;
     FirebaseFirestore firebaseFirestore;
@@ -66,7 +68,6 @@ public class AnadirTareaCaracteristicas extends Fragment {
         elegirHora = view.findViewById(R.id.boton_selectorhoratarea);
         elegirFecha = view.findViewById(R.id.boton_selectorfechatarea);
         tareaCreada = view.findViewById(R.id.boton_creartareanueva);
-
         //BBDD
         firebaseUsuario = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -115,6 +116,8 @@ public class AnadirTareaCaracteristicas extends Fragment {
             case 13 :
                 tituloTarea.setText("Links informacion");
                 break;
+
+
         }
         elegirFecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +128,7 @@ public class AnadirTareaCaracteristicas extends Fragment {
                 year = c.get(Calendar.YEAR);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         String format_dia,format_mes;
@@ -180,7 +184,7 @@ public class AnadirTareaCaracteristicas extends Fragment {
         tareaCreada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(),"LÑisto",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),"Listo",Toast.LENGTH_SHORT).show();
 
                 String tt = tituloTarea.getText().toString().trim();
                 String tn = tareaNueva.getText().toString().trim();
@@ -216,9 +220,10 @@ public class AnadirTareaCaracteristicas extends Fragment {
         return view;
     }
 
-    public int setTextN(int numero){
+    public int setTextNumero(int numero){
         this.numero=numero;
         //numerodetarea = String.valueOf(numero);
         return numero;
     }
+
 }

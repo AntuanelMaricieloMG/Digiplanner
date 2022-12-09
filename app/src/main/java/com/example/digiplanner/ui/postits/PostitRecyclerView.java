@@ -18,7 +18,7 @@ public class PostitRecyclerView {
         return titulo;
     }
 
-    public void setTituloPost(String titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 

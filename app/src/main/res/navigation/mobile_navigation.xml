@@ -30,9 +30,9 @@
         tools:layout="@layout/fragment_postits" />
 
     <fragment
-        android:id="@+id/navigation_tablas"
-        android:name="com.example.digiplanner.ui.tablas.TablasFragment"
+        android:id="@+id/navigation_lista"
+        android:name="com.example.digiplanner.ui.Lista.ListaFragment"
         android:label="@string/title_tablas"
-        tools:layout="@layout/fragment_tablas" />
+        tools:layout="@layout/fragment_lista" />
 
 </navigation>

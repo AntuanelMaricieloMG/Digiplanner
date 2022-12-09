@@ -78,7 +78,7 @@ public class AccederApp extends AppCompatActivity {
 
                 if(email.isEmpty() || constraseña.isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(),"Rellena los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Rellena los campos para acceder", Toast.LENGTH_SHORT).show();
                 }
 
                 else
@@ -102,18 +102,7 @@ public class AccederApp extends AppCompatActivity {
                 }
             }
         });
-/*
-       if(firebaseUsuario!=null)
-        {
-            finish();
-            startActivity(new Intent(AccederApp.this,MainActivity.class));
-        }
 
-        else
-        {
-
-        }
-*/
     }
     private void verificaionEmail()
     {

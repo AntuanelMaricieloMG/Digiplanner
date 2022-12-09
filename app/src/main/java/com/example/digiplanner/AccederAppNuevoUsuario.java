@@ -1,10 +1,12 @@
 package com.example.digiplanner;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,21 +14,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class AccederAppNuevoUsuario extends AppCompatActivity {
 
-    private EditText nuevoEmail,nuevaContraseña;
-    private RelativeLayout nuevoUsuario;
-    private TextView accede;
-    private FirebaseAuth firebaseAutentificacion;
+    EditText nuevoEmail,nuevaContraseña,nuevoNombre,nuevoTeléfono ;
+    RelativeLayout botonnuevoUsuario;
+    TextView accede;
+    FirebaseAuth firebaseAutentificacion;
+    FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUsuario;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +45,27 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
         setContentView(R.layout.principal_acceder_app_nuevousuario);
         getSupportActionBar().hide();
 
-        //id de elementos Layouts
+        //ID
         nuevoEmail = findViewById(R.id.text_login_nuevo_email);
         nuevaContraseña = findViewById(R.id.text_login_nueva_contraseña);
-        nuevoUsuario = findViewById(R.id.login_nuevo_usuario);
+        nuevoNombre = findViewById(R.id.text_usuarionombre);
+        nuevoTeléfono = findViewById(R.id.text_usuariotelefono);
+        botonnuevoUsuario = findViewById(R.id.login_nuevo_usuario);
         accede = findViewById(R.id.tengo_un_usuario);
 
-        firebaseAutentificacion = FirebaseAuth.getInstance();
 
-        nuevoUsuario.setOnClickListener(new View.OnClickListener() {
+        //BBDD
+        firebaseAutentificacion = FirebaseAuth.getInstance();
+        firebaseUsuario = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        accede.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AccederAppNuevoUsuario.this,AccederApp.class));
+            }
+        });
+        botonnuevoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String emailnuevo = nuevoEmail.getText().toString().trim();
@@ -59,6 +82,7 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
                 else
                 {
                     //se registra usuario nuevo
+
                     firebaseAutentificacion.createUserWithEmailAndPassword(emailnuevo,contrasseñanueva).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -66,6 +90,28 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
                             {
                                 Toast.makeText(getApplicationContext(),"Registro completo",Toast.LENGTH_SHORT).show();
                                 sendEmail();
+                                //Guardar datos
+
+                                String nombre = nuevoNombre.getText().toString().trim();
+                                String telefono = nuevoTeléfono.getText().toString().trim();
+
+                                Map<String,Object> map = new HashMap<>();
+                                map.put("nombre",nombre);
+                                map.put("telefono",telefono);
+
+
+                                firebaseFirestore.collection("datos").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+
+                                    }
+                                });
+
                             }
                             else
                             {

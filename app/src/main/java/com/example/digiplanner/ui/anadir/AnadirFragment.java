@@ -1,6 +1,7 @@
 package com.example.digiplanner.ui.anadir;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -48,6 +49,8 @@ public class AnadirFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_anadir,container,false);
+
+
         //Tareas de casa ID
         listaTareas = view.findViewById(R.id.lista_tareas);
         textviewtituloTareas = view.findViewById(R.id.textView_añadirtitulo1);
@@ -90,4 +93,6 @@ public class AnadirFragment extends Fragment {
 
         return view;
     }
+
+
 }

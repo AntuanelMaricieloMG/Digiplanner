@@ -41,9 +41,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-
-
         recyclerLista = view.findViewById(R.id.recyclerview_lista);
+
         recyclerLista.setLayoutManager(new LinearLayoutManager(getContext()));
         Query query = firebaseFirestore.collection("evento");
         FirestoreRecyclerOptions<Evento> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Evento>().setQuery(query, Evento.class).build();
@@ -51,6 +50,8 @@ public class HomeFragment extends Fragment {
         adaptadorRecycler = new AdaptadorRecycler(firestoreRecyclerOptions);
         adaptadorRecycler.notifyDataSetChanged();
         recyclerLista.setAdapter(adaptadorRecycler);
+
+
 
 
         return view;

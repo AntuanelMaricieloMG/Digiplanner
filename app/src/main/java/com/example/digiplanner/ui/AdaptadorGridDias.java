@@ -60,11 +60,11 @@ public class AdaptadorGridDias extends ArrayAdapter {
             view  = inflater.inflate(R.layout.grid_dias,parent,false);
         }
         if(displayMonth == currentMonth && displayYear == currentYear){
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
+            view.setBackgroundResource(R.drawable.grid_dias_design);
         }
         else
         {
-            view.setBackgroundColor(Color.parseColor("#FFFF0000"));
+            view.setBackgroundResource(R.drawable.grid_dias_design2);
         }
 
         TextView Day_number = view.findViewById(R.id.grid_numero_dia);
@@ -124,44 +124,5 @@ public class AdaptadorGridDias extends ArrayAdapter {
         }
         return diaFecha;
 
-    /*Context context;
-    String[] numeroDia;
-    TextView textDia;
 
-    LayoutInflater inflater;
-
-    public AdaptadorGridDias(Context context,String[] numeroDia){
-        this.context=context;
-        this.numeroDia=numeroDia;
-    }
-
-    @Override
-    public int getCount() {
-        return numeroDia.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return position;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        if (convertView == null) {
-            inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.grid_dias, parent,false);
-
-        }
-
-        textDia =(TextView) convertView.findViewById(R.id.grid_numero_dia);
-        textDia.setText(numeroDia[position]);
-        return convertView;
-
-    }*/
 }}

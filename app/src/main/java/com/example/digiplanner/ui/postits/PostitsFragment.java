@@ -107,7 +107,18 @@ public class PostitsFragment extends Fragment {
                 positViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        /*
                         CaracteristicasPostit caracteristicas= new CaracteristicasPostit();
+                        bundle = getArguments();
+                        bundle = new Bundle();
+                        bundle.putString("Titulo", postitRecyclerView.getTitulo());
+                        bundle.putString("Contenido", postitRecyclerView.getContenido());
+                        bundle.putString("Postid", iddocumento);
+                        caracteristicas.setArguments(bundle);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment_activity_main, caracteristicas);
+                        transaction.commit();
+
                         bundle = new Bundle();
                         bundle.putString("Titulo", postitRecyclerView.getTitulo());
                         bundle.putString("Titulo", postitRecyclerView.getContenido());
@@ -115,7 +126,7 @@ public class PostitsFragment extends Fragment {
                         caracteristicas.setArguments(bundle);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.nav_host_fragment_activity_main, caracteristicas);
-                        transaction.commit();
+                        transaction.commit();*/
                     }
                 });
 

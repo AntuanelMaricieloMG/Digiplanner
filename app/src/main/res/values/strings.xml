@@ -29,5 +29,7 @@
     <string name="introduce_contrase_a">Introduce contraseña</string>
     <string name="olvide_mi_contrase_a">Olvide mi contraseña</string>
     <string name="fecha">Fecha</string>
+    <string name="title_contactos">Contactos guardados</string>
+    <string name="title_lista" />
 
 </resources>

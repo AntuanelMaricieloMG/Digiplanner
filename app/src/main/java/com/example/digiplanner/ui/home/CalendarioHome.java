@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,30 +49,24 @@ import java.util.TimeZone;
 
 public class CalendarioHome extends LinearLayout {
 
-    Button botonVolver,botonSiguiente;
+    ImageButton botonVolver,botonSiguiente;
     TextView FechaMes;
     GridView gridMes;
-    RecyclerView recyclerLista;
+
     Context context;
     static final int todosDiasCalendario = 42;
     Calendar calendario = Calendar.getInstance(Locale.ENGLISH);
-    AlertDialog alertDialog;
-    SQliteopenhelper sqliteopenhelper;
     AdaptadorGridDias adaptadorGridDias;
     String m ,y;
 
 
     List<Date> fecha = new ArrayList<>();
     List<EventoCalendario> ListaDeEventos = new ArrayList<>();
-    List<Evento> listaEventos;
 
     SimpleDateFormat formatofecha = new SimpleDateFormat("MMMM yyyy",Locale.ENGLISH);
     SimpleDateFormat formatofechames = new SimpleDateFormat("MMMM" , Locale.ENGLISH);
     SimpleDateFormat formatofechaaño = new SimpleDateFormat("yyyy",Locale.ENGLISH);
 
-
-    //FirestoreRecyclerAdapter<Evento, AdaptadorGridTareas.ViewHolder> firestoreRecyclerAdapter;
-    //FirebaseRecyclerOptions<Evento> opciones;
 
 
 
@@ -93,12 +88,7 @@ public class CalendarioHome extends LinearLayout {
         botonVolver = view.findViewById(R.id.boton_Volver);
         FechaMes = view.findViewById(R.id.MesCalendario);
         gridMes = (GridView) view.findViewById(R.id.gridViewMes);
-        //recyclerLista = view.findViewById(R.id.recyclerview_lista);
-        //listaEventos = new ArrayList<>();
-        //adaptadorRecycler = new AdaptadorRecycler(context, (ArrayList<Evento>) listaEventos);
-
-        //BBDD
-        //BBDD = FirebaseDatabase.getInstance().getReference("pet");
+        Setup();
 
         botonVolver.setOnClickListener(new OnClickListener() {
             @Override
@@ -180,31 +170,6 @@ public class CalendarioHome extends LinearLayout {
 
         });
 
-
-        //firebaseDatabase = FirebaseDatabase.getInstance();
-        /*BBDD = FirebaseDatabase.getInstance().getReference("pet");
-
-        recyclerLista.setHasFixedSize(true);
-        recyclerLista.setLayoutManager(new LinearLayoutManager(context));
-        recyclerLista.setAdapter(adaptadorRecycler);
-        BBDD.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren())
-                {
-                    Evento evento = dataSnapshot.getValue(Evento.class);
-                    listaEventos.add(evento);
-
-                }
-                adaptadorRecycler.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
     }
 
     public CalendarioHome(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -233,28 +198,5 @@ public class CalendarioHome extends LinearLayout {
         gridMes.setAdapter(adaptadorGridDias);
 
     }
-
-    /*private void EventosPorMes(String month,String year){
-        //rellena la lista
-        ListaDeEventos.clear();
-        sqliteopenhelper = new SQliteopenhelper(context);
-        SQLiteDatabase basededatos = sqliteopenhelper.getReadableDatabase();
-        Cursor cursor = sqliteopenhelper.ReadEventsperMonth(month,year,basededatos);
-        while (cursor.moveToNext())
-        {
-            @SuppressLint("Range") String eleccionDeEvento = cursor.getString(cursor.getColumnIndex(Estructura.EVENTOS));
-            @SuppressLint("Range") String eleccionDeTiempo = cursor.getString(cursor.getColumnIndex(Estructura.TIEMPO));
-            @SuppressLint("Range") String eleccionDeFecha = cursor.getString(cursor.getColumnIndex(Estructura.DATE));
-            @SuppressLint("Range") String eleccionDeMes = cursor.getString(cursor.getColumnIndex(Estructura.MONTH));
-            @SuppressLint("Range") String eleccionDeAño = cursor.getString(cursor.getColumnIndex(Estructura.YEAR));
-            EventoCalendario eventoss = new EventoCalendario(eleccionDeEvento,eleccionDeTiempo,eleccionDeFecha,eleccionDeMes,eleccionDeAño);
-            ListaDeEventos.add(eventoss);
-        }
-        cursor.close();
-        sqliteopenhelper.close();
-    }*/
-
-
-
 
 }

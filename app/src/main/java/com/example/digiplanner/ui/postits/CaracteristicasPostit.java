@@ -19,6 +19,7 @@ public class CaracteristicasPostit extends Fragment {
     TextView tituloCaracteristicaspostit,contenidoCaracteristicaspostit;
     Button botonGuardarCaracteristicaspostit;
     Toolbar toolbarCaracteristicaspostit;
+    Bundle bundle;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -29,7 +30,7 @@ public class CaracteristicasPostit extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_caracteristicaspostit,container,false);
+        /*View view = inflater.inflate(R.layout.fragment_caracteristicaspostit,container,false);
         //ID
         tituloCaracteristicaspostit = view.findViewById(R.id.titulo_caracteristicaspostit);
         contenidoCaracteristicaspostit = view.findViewById(R.id.contenido_caracteristicaspostit);
@@ -41,18 +42,26 @@ public class CaracteristicasPostit extends Fragment {
         botonGuardarCaracteristicaspostit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                bundle = getArguments();
+                String dataReceiveT = bundle.getString("Titulo");
+                String dataReceiveC = bundle.getString("Contenido");
+                String dataReceiveP = bundle.getString("Postid");
+
                 if (getArguments() != null){
                     String dataReceiveT = getArguments().getString("Titulo");
                     String dataReceiveC = getArguments().getString("Contenido");
                     String dataReceiveP = getArguments().getString("Postid");
                 }
             }
-        });
+        });*/
 
-        tituloCaracteristicaspostit.setText(getString(Integer.parseInt("Titulo")));
-        contenidoCaracteristicaspostit.setText(getString(Integer.parseInt("Contenido")));
+        //tituloCaracteristicaspostit.setText(bundle.getString("Tilulo"));
+        //contenidoCaracteristicaspostit.setText(bundle.getString("Contenido"));
+        //tituloCaracteristicaspostit.setText(getString(Integer.parseInt("Titulo")));
+        //contenidoCaracteristicaspostit.setText(getString(Integer.parseInt("Contenido")));
 
 
-        return view;
+        return null;
     }
 }
