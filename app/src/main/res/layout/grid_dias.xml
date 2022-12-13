@@ -9,10 +9,10 @@
         android:id="@+id/grid_numero_dia"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:text="Dia"
+        android:text="@string/dia"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"/>
     <TextView
         android:id="@+id/grid_espacio"

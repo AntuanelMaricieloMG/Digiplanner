@@ -11,7 +11,7 @@
         android:layout_width="380dp"
         android:layout_height="91dp"
         android:layout_margin="20dp"
-        android:background="#CA97E6">
+        android:background="#EDD27F">
 
 
         <EditText
@@ -22,10 +22,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="-1dp"
             android:layout_marginTop="1dp"
-            android:hint="titulo"
+            android:autofillHints=""
+            android:hint="@string/titulo"
             android:paddingTop="12dp"
             android:textStyle="bold"
-            >
+            tools:ignore="TextContrastCheck">
 
         </EditText>
 
@@ -45,10 +46,13 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="239dp"
-        android:background="#E0CDFA"
+        android:autofillHints=""
+        android:background="#F1F3C5"
         android:gravity="top|left"
-        android:hint="conteniddo post"
-        android:padding="15dp" />
+        android:hint="@string/conteniddo_post"
+        android:importantForAutofill="no"
+        android:padding="15dp"
+        tools:ignore="RtlHardcoded,TextContrastCheck" />
 
     <ProgressBar
         android:id="@+id/progress_crear"
@@ -62,17 +66,29 @@
         android:layout_marginBottom="369dp"
         android:visibility="invisible" />
 
-    <Button
+
+    <RelativeLayout
         android:id="@+id/boton_guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="82dp"
+        android:layout_width="138dp"
+        android:layout_height="83dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="169dp"
+        android:layout_marginStart="144dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="123dp"
-        android:text="Guardar" />
+        android:background="@drawable/design_boton_loginuser"
+        android:text="@string/guardarpost">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:text="@string/guardar"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </RelativeLayout>

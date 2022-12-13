@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -28,8 +29,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="italic"
-            android:text="Crea tu usuario"
-            android:textSize="30dp"
+            android:text="@string/crea_tu_usuario"
+            android:textSize="30sp"
             />
     </LinearLayout>
 
@@ -44,12 +45,13 @@
         android:layout_marginLeft="30dp">
 
         <EditText
+            android:id="@+id/text_usuarionombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_usuarionombre"
-            android:hint="Nombre de usuario"
-            android:inputType="textEmailAddress">
-        </EditText>
+            android:autofillHints=""
+            android:hint="@string/nombre_de_usuario"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,12 +64,13 @@
         android:layout_marginLeft="30dp">
 
         <EditText
+            android:id="@+id/text_usuariotelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_usuariotelefono"
-            android:hint="Escribe un numero de teléfono"
-            android:inputType="textEmailAddress">
-        </EditText>
+            android:hint="@string/escribe_un_numero_de_tel_fono"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,12 +83,13 @@
         android:layout_marginLeft="30dp">
 
         <EditText
+            android:id="@+id/text_login_nuevo_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_nuevo_email"
-            android:hint="Introduce un email"
-            android:inputType="textEmailAddress">
-        </EditText>
+            android:autofillHints=""
+            android:hint="@string/introduce_un_email"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -99,12 +103,13 @@
         app:passwordToggleEnabled="true">
 
         <EditText
+            android:id="@+id/text_login_nueva_contraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_nueva_contraseña"
-            android:hint="Contraseña nueva"
-            android:inputType="textPassword">
-        </EditText>
+            android:autofillHints=""
+            android:hint="@string/contrase_a_nueva"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -135,9 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
-            android:text="Crea nuevo usuario"
+            android:text="@string/crea_nuevo_usuario"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -151,10 +156,11 @@
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="33dp"
-        android:text="Ya tienes un usuario ?"
+        android:text="@string/ya_tienes_un_usuario"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:ignore="TextContrastCheck" />
 
 </RelativeLayout>

@@ -9,21 +9,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.digiplanner.ui.home.HomeFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
-
 import java.util.Objects;
+
 
 public class AccederApp extends AppCompatActivity {
 
@@ -40,7 +32,7 @@ public class AccederApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.principal_acceder_app);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         //ID
         emailentrar = findViewById(R.id.text_login_email);
@@ -56,50 +48,34 @@ public class AccederApp extends AppCompatActivity {
         firebaseUsuario = firebaseAutenticacion.getCurrentUser();
 
 
-        crearCuenta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AccederApp.this,AccederAppNuevoUsuario.class));
+        crearCuenta.setOnClickListener(v -> startActivity(new Intent(AccederApp.this, AccederAppNuevoUsuario.class)));
+
+        olvideContraseña.setOnClickListener(v -> startActivity(new Intent(AccederApp.this, AccederAppOlvidadoUsuario.class)));
+
+        entrar.setOnClickListener(v -> {
+            String email = emailentrar.getText().toString().trim();
+            String constraseña = contraseñaentrar.getText().toString().trim();
+
+            if(email.isEmpty() || constraseña.isEmpty())
+            {
+                Toast.makeText(getApplicationContext(),"Rellena los campos para acceder", Toast.LENGTH_SHORT).show();
             }
-        });
 
-        olvideContraseña.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AccederApp.this,AccederAppOlvidadoUsuario.class));
-            }
-        });
+            else
+            {
+                procesocircular.setVisibility(View.VISIBLE);
+                firebaseAutenticacion.signInWithEmailAndPassword(email,constraseña).addOnCompleteListener(task -> {
+                    if(task.isSuccessful())
+                    {
+                        verificaionEmail();
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"No existe",Toast.LENGTH_SHORT).show();
+                        procesocircular.setVisibility(View.VISIBLE);
+                    }
+                });
 
-        entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailentrar.getText().toString().trim();
-                String constraseña = contraseñaentrar.getText().toString().trim();
-
-                if(email.isEmpty() || constraseña.isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(),"Rellena los campos para acceder", Toast.LENGTH_SHORT).show();
-                }
-
-                else
-                {
-                    procesocircular.setVisibility(View.VISIBLE);
-                    firebaseAutenticacion.signInWithEmailAndPassword(email,constraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-                                verificaionEmail();
-                            }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(),"No existe",Toast.LENGTH_SHORT).show();
-                                procesocircular.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    });
-
-                }
             }
         });
 

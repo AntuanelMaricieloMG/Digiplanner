@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="15dp"
-    android:background="@drawable/backgroundd">
+    android:padding="15dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -15,45 +15,51 @@
         android:id="@+id/postLayout">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/postlinearlayout"
-            android:orientation="vertical"
-            android:background="#E0CDFA">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F1F3C5"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="#CA97E6">
+                android:background="#EDD27F"
+                android:orientation="horizontal">
+
                 <TextView
+                    android:id="@+id/crearposttitulo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id = "@+id/crearposttitulo"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Tu "
-                    android:layout_weight="1">
-                </TextView>
+                    android:text="@string/tu"
+                    tools:ignore="TextContrastCheck"/>
+
                 <ImageView
+                    android:id="@+id/menudelospostits"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/menudelospostits"
                     android:layout_weight="0"
-                    android:src="@drawable/ic_baseline_more_vert_24">
+                    android:contentDescription="@string/textoo"
+                    android:src="@drawable/ic_baseline_delete_forever_24">
 
                 </ImageView>
             </LinearLayout>
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/crearpostcontenido"
-                android:paddingBottom="20dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
                 android:paddingLeft="10dp"
-                android:text="codigo">
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+
+                android:text="@string/codigo"
+                tools:ignore="TextContrastCheck">
 
             </TextView>
         </LinearLayout>

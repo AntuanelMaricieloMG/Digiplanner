@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/design_default_color_primary</item>
-        <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
-        <item name="colorAccent">@color/grey</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">#AC2626</item>
+        <item name="colorPrimaryDark">#44BD29</item>
+        <item name="colorAccent">@color/purple_500</item>
+        <item name="colorControlNormal">#E0A8EF</item>
     </style>
 </resources>

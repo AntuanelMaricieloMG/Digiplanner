@@ -13,8 +13,6 @@ import com.example.digiplanner.R;
 import com.example.digiplanner.ui.home.Evento;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,37 +31,26 @@ public class AdaptadorRecycler extends FirestoreRecyclerAdapter <Evento,Adaptado
 
         DocumentSnapshot documentSnapshot = getSnapshots().getSnapshot(viewHolder.getAdapterPosition());
         String id = documentSnapshot.getId();
-        viewHolder.eliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarEvento(id);
-            }
-        });
+        viewHolder.eliminar.setOnClickListener(v -> eliminarEvento(id));
     }
     public void eliminarEvento(String id){
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("evento").document(id).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
+        firebaseFirestore.collection("evento").document(id).delete().addOnSuccessListener(unused -> {
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-             @Override
-            public void onFailure(@NonNull Exception e) {
+        }).addOnFailureListener(e -> {
 
-            }
-        });
+       });
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item,parent,false);
-        return new ViewHolder (v);
+        return new ViewHolder(v);
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageButton eliminar;
         TextView nombre,hora,fecha;

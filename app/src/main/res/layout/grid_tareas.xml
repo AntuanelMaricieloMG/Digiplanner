@@ -12,7 +12,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/grid_tareas_design">
+        android:background="#F1F3C5">
 
         <LinearLayout
             android:layout_width="150dp"
@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:color="@color/blue"
             android:orientation="vertical"
-            android:background="@drawable/grid_tareas_design">
+            android:background="#F1F3C5">
 
             <ImageView
                 android:id="@+id/boton_tareas"
@@ -28,7 +28,8 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/ic_launcher_background"
+                />
 
             <TextView
                 android:id="@+id/textView"
@@ -37,8 +38,8 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Elementos"
-                android:textSize="20dp"
+                android:text="@string/elementos"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

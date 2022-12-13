@@ -1,7 +1,5 @@
 package com.example.digiplanner.ui.cuentapersonal;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
-
-
 import com.example.digiplanner.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,22 +20,19 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.concurrent.Executor;
-
 
 public class CuentaPersonalFragment extends Fragment {
 
     ImageView imagenCuenta;
     TextView textoNombre,textoCorreo ,textoNotificaciones ;
     TextView nombreUsuario,correoUsuario  ,telefonoUsuario;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch interruptor;
     CardView vistaCirculo;
-
-    FirebaseAuth.AuthStateListener authStateListener;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
-    String idUser;
-
+    FirebaseUser firebaseUsuario;
+    String uid;
 
 
     @Override
@@ -67,25 +57,26 @@ public class CuentaPersonalFragment extends Fragment {
         interruptor = view.findViewById(R.id.switch_interruptor);
         vistaCirculo = (CardView) view.findViewById(R.id.vistaCircular);
 
-        interruptor.isChecked();
 
 
+
+        //BBDD
         firebaseAuth= FirebaseAuth.getInstance();
-        final FirebaseUser user = firebaseAuth.getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        idUser = firebaseAuth.getCurrentUser().getUid();
+        firebaseUsuario=firebaseAuth.getCurrentUser();
 
-        correoUsuario.setText(user.getEmail());
-        nombreUsuario.setText(user.getUid());
 
-        DocumentReference documentReference = firebaseFirestore.collection("datos").document(idUser);
-        documentReference.addSnapshotListener( (EventListener<DocumentSnapshot>) new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                nombreUsuario.setText(value.getString("nombre"));
-                telefonoUsuario.setText(value.getString("telefono"));
-            }
+        correoUsuario.setText(firebaseUsuario.getEmail());
+        uid = firebaseUsuario.getUid();
+
+
+        DocumentReference documentReference = firebaseFirestore.collection("datos"). document("akg6xaa0hj2n9Zwo8o3n");
+
+        documentReference.addSnapshotListener(getActivity(), (value, error) -> {
+            nombreUsuario.setText(value.getString("nombre"));
+            telefonoUsuario.setText(value.getString("telefono"));
         });
+
         return view;
     }
 

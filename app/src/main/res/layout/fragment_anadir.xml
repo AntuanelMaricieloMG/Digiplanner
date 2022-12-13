@@ -9,44 +9,43 @@
     android:fillViewport="true"
     android:background="@drawable/backgroundd">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.anadir.AnadirFragment"
-    android:background="@drawable/backgroundd"
-    android:id="@+id/añadir">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_tareas"
-        android:layout_width="409dp"
-        android:layout_height="678dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/añadir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/backgroundd"
-        app:layout_constraintTop_toBottomOf="@+id/textView_añadirtitulo1"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView_añadirtitulo1"
-        android:layout_width="298dp"
-        android:layout_height="39dp"
-        android:background="@drawable/textview_design"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Elige para crear tarea nueva"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022"
-        tools:ignore="MissingConstraints" />
+        tools:context=".ui.anadir.AnadirFragment">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lista_tareas"
+            android:layout_width="match_parent"
+            android:layout_height="563dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_añadirtitulo1"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView_añadirtitulo1"
+            android:layout_width="298dp"
+            android:layout_height="39dp"
+            android:background="@drawable/textview_design"
+            android:gravity="center"
+            android:text="@string/elige_para_crear_evento_nuevo"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

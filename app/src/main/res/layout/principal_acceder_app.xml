@@ -33,10 +33,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Digiplanner"
+            android:text="@string/digiplanner"
             android:textColor="@color/white"
             android:textStyle="italic"
-            android:textSize="42dp"
+            android:textSize="42sp"
             />
 
     </LinearLayout>
@@ -60,12 +60,14 @@
         tools:ignore="MissingConstraints">
 
         <EditText
+            android:id="@+id/text_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_email"
-            android:hint="Email"
-            android:inputType="textEmailAddress">
-        </EditText>
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:importantForAutofill="no"
+            android:autofillHints=""/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,12 +82,14 @@
         app:passwordToggleEnabled="true">
 
         <EditText
+            android:id="@+id/text_login_contraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id = "@+id/text_login_contraseña"
-            android:hint="Contraseña"
-            android:inputType="textPassword">
-        </EditText>
+            android:hint="@string/contrase_a"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:autofillHints=""
+            android:importantForAutofill="no"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
@@ -102,9 +106,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Entrar"
+            android:text="@string/entrar"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_centerInParent="true"
             android:textColor="@color/white" />
     </RelativeLayout>
@@ -118,7 +122,7 @@
         android:layout_marginRight="20dp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_below="@+id/login_usuario"
         android:layout_marginTop="10dp"
         android:textAlignment="center" />
@@ -138,8 +142,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text="Nuevo usuario"
+            android:textSize="20sp"
+            android:text="@string/nuevo_usuario"
             android:layout_centerInParent="true"
             android:textColor="@color/white" />
     </RelativeLayout>

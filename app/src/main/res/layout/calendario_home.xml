@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/calendar_layout"
     android:orientation="vertical"
-    android:background="@drawable/grid_dias_design">
+    android:background="@drawable/layout_borde">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,18 +21,20 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/linearlayout_calendario_design"
-            android:src="@drawable/ic_baseline_keyboard_double_arrow_left_24"/>
+            android:contentDescription="@string/calendarioh"
+            android:src="@drawable/ic_baseline_keyboard_double_arrow_left_24"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/MesCalendario"
-            android:layout_width="233dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_weight="3"
             android:gravity="center"
             android:textColor="@color/black"
-            android:text="Current Date"
-            android:textSize="25dp"
+            android:text="@string/current_date"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
         <ImageButton
@@ -39,7 +42,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@drawable/linearlayout_calendario_design"
-            android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"/>
+            android:src="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+            android:contentDescription="@string/date" />
 
     </LinearLayout>
 
@@ -59,7 +63,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="L"
+            android:text="@string/l"
             android:textStyle="bold" />
 
         <TextView
@@ -69,7 +73,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="Ma"
+            android:text="@string/ma"
             android:textStyle="bold" />
 
         <TextView
@@ -79,7 +83,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="X"
+            android:text="@string/x"
             android:textStyle="bold" />
 
         <TextView
@@ -89,7 +93,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="J"
+            android:text="@string/j"
             android:textStyle="bold" />
 
         <TextView
@@ -99,7 +103,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="V"
+            android:text="@string/v"
             android:textStyle="bold" />
 
         <TextView
@@ -109,7 +113,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="S"
+            android:text="@string/s"
             android:textStyle="bold" />
 
         <TextView
@@ -119,7 +123,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_calendario_design"
             android:gravity="center"
-            android:text="D"
+            android:text="@string/d"
             android:textStyle="bold" />
     </LinearLayout>
 

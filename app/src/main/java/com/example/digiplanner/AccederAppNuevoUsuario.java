@@ -1,24 +1,14 @@
 package com.example.digiplanner;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -43,8 +33,7 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.principal_acceder_app_nuevousuario);
-        getSupportActionBar().hide();
-
+        Objects.requireNonNull(getSupportActionBar()).hide();
         //ID
         nuevoEmail = findViewById(R.id.text_login_nuevo_email);
         nuevaContraseña = findViewById(R.id.text_login_nueva_contraseña);
@@ -59,67 +48,49 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
         firebaseUsuario = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        accede.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AccederAppNuevoUsuario.this,AccederApp.class));
+        accede.setOnClickListener(v -> startActivity(new Intent(AccederAppNuevoUsuario.this,AccederApp.class)));
+        botonnuevoUsuario.setOnClickListener(v -> {
+            String emailnuevo = nuevoEmail.getText().toString().trim();
+            String contrasseñanueva = nuevaContraseña.getText().toString().trim();
+
+            if(emailnuevo.isEmpty() || contrasseñanueva.isEmpty())
+            {
+                Toast.makeText(getApplicationContext(),"Se requieren todos los campos", Toast.LENGTH_SHORT).show();
             }
-        });
-        botonnuevoUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailnuevo = nuevoEmail.getText().toString().trim();
-                String contrasseñanueva = nuevaContraseña.getText().toString().trim();
+            else if(contrasseñanueva.length()<7)
+            {
+                Toast.makeText(getApplicationContext(),"Contraseña requiere menos de 7 digitos", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                //se registra usuario nuevo
 
-                if(emailnuevo.isEmpty() || contrasseñanueva.isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(),"Se requieren todos los campos", Toast.LENGTH_SHORT).show();
-                }
-                else if(contrasseñanueva.length()<7)
-                {
-                    Toast.makeText(getApplicationContext(),"Contraseña requiere menos de 7 digitos", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    //se registra usuario nuevo
+                firebaseAutentificacion.createUserWithEmailAndPassword(emailnuevo,contrasseñanueva).addOnCompleteListener(task -> {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(getApplicationContext(),"Registro completo",Toast.LENGTH_SHORT).show();
+                        sendEmail();
+                        //Guardar datos
 
-                    firebaseAutentificacion.createUserWithEmailAndPassword(emailnuevo,contrasseñanueva).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-                                Toast.makeText(getApplicationContext(),"Registro completo",Toast.LENGTH_SHORT).show();
-                                sendEmail();
-                                //Guardar datos
+                        String nombre = nuevoNombre.getText().toString().trim();
+                        String telefono = nuevoTeléfono.getText().toString().trim();
 
-                                String nombre = nuevoNombre.getText().toString().trim();
-                                String telefono = nuevoTeléfono.getText().toString().trim();
-
-                                Map<String,Object> map = new HashMap<>();
-                                map.put("nombre",nombre);
-                                map.put("telefono",telefono);
+                        Map<String,Object> map = new HashMap<>();
+                        map.put("nombre",nombre);
+                        map.put("telefono",telefono);
 
 
-                                firebaseFirestore.collection("datos").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
+                        firebaseFirestore.collection("datos").add(map).addOnSuccessListener(documentReference -> {
+                        }).addOnFailureListener(e -> {
 
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
+                        });
 
-                                    }
-                                });
-
-                            }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(),"Fallo", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"Fallo", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -129,14 +100,11 @@ public class AccederAppNuevoUsuario extends AppCompatActivity {
         FirebaseUser firebaseUsuario = firebaseAutentificacion.getCurrentUser();
         if(firebaseUsuario != null)
         {
-            firebaseUsuario.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(getApplicationContext(), "verificacion hecha, entra otra vez", Toast.LENGTH_SHORT).show();
-                    firebaseAutentificacion.signOut();
-                    finish();
-                    startActivity(new Intent(AccederAppNuevoUsuario.this,AccederApp.class));
-                }
+            firebaseUsuario.sendEmailVerification().addOnCompleteListener(task -> {
+                Toast.makeText(getApplicationContext(), "verificacion hecha, entra otra vez", Toast.LENGTH_SHORT).show();
+                firebaseAutentificacion.signOut();
+                finish();
+                startActivity(new Intent(AccederAppNuevoUsuario.this,AccederApp.class));
             });
         }
         else

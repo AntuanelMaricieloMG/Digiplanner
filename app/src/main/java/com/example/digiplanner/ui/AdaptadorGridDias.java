@@ -1,30 +1,18 @@
 package com.example.digiplanner.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.example.digiplanner.R;
 import com.example.digiplanner.ui.home.EventoCalendario;
-
-import org.checkerframework.checker.units.qual.A;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class AdaptadorGridDias extends ArrayAdapter {
 
@@ -32,7 +20,7 @@ public class AdaptadorGridDias extends ArrayAdapter {
     Calendar fechaMes;
     List<EventoCalendario> eventos;
     LayoutInflater inflater;
-    String date,mes,año;
+
 
     public AdaptadorGridDias(@NonNull Context context, List<Date> dates, Calendar fechaMes , List<EventoCalendario> eventos) {
         super(context,R.layout.grid_dias );
@@ -68,24 +56,7 @@ public class AdaptadorGridDias extends ArrayAdapter {
         }
 
         TextView Day_number = view.findViewById(R.id.grid_numero_dia);
-        TextView numeroDeEvento = view.findViewById(R.id.grid_espacio);
         Day_number.setText(String.valueOf(DayNo));
-        //PRUEBA guarda evento en lista array
-        /*Toast.makeText(getContext(),date+mes+año,Toast.LENGTH_SHORT).show();
-
-        Calendar CalendarioDeEventos = Calendar.getInstance();
-        ArrayList<String> arrayList = new ArrayList<>();
-        for(int i=0;i<eventos.size();i++)
-        {
-            CalendarioDeEventos.setTime(FechaString(eventos.get(i).getDATE()));
-            if(DayNo == CalendarioDeEventos.get(Calendar.DAY_OF_MONTH)
-               && displayMonth == CalendarioDeEventos.get(Calendar.MONTH)+1
-               && displayYear == CalendarioDeEventos.get(Calendar.YEAR))
-            {
-                arrayList.add(eventos.get(i).getEVENTOS());
-                numeroDeEvento.setText(arrayList.size()+"eventos");
-            }
-        }*/
 
 
         return view;
@@ -107,22 +78,8 @@ public class AdaptadorGridDias extends ArrayAdapter {
         return super.getItem(position);
     }
 
-    public void  Guardar(String mes, String date, String año){
-        this.mes= mes;
-        this.date = date;
-        this.año = año;
-    }
-    private Date FechaString(String eventDate){
-        SimpleDateFormat format= new SimpleDateFormat("yyyy-MM-ddd", Locale.ENGLISH);
-        Date diaFecha = null;
-        try
-        {
-            diaFecha = format.parse(eventDate);
-        }catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
-        return diaFecha;
 
 
-}}
+
+
+}

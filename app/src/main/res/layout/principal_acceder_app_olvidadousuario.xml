@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background12">
@@ -25,14 +26,15 @@
             android:id="@+id/text_olvide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Olvide usuario"
-            android:textSize="30dp"
+            android:text="@string/olvide_usuario"
+            android:textSize="30sp"
             android:textColor="@color/white"
             />
     </LinearLayout>
 
     <EditText
         android:id="@+id/text_olvide_contraseña"
+        android:inputType="text"
         android:layout_width="341dp"
         android:layout_height="48dp"
         android:layout_above="@+id/linea_centro3"
@@ -40,7 +42,9 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:background="@color/white"
-        android:hint="Indica el correo del usuario">
+        android:hint="@string/indica_el_correo_del_usuario"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="">
 
     </EditText>
 
@@ -62,21 +66,21 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
-            android:text="Recuperar contraseña"
+            android:text="@string/recuperar_contrase_a"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="volver al inicio"
+        android:text="@string/volver_al_inicio"
         android:id="@+id/olvidecontraseña_vuelveatras"
         android:layout_marginBottom="30dp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textAlignment="center">
 
     </TextView>

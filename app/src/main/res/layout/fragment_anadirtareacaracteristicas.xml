@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="520dp"
+    android:layout_height="540dp"
     android:layout_gravity="center"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.anadir.AnadirTareaCaracteristicas"
-    android:background="@drawable/backgroundd">
+    android:background="#F1F3C5">
 
     <TextView
         android:layout_width="372dp"
         android:layout_height="57dp"
         android:layout_margin="20dp"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:gravity="center"
-        android:text = "rellena"
+        android:text = "@string/rellena"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:id="@+id/titulo_anadirtarea"/>
@@ -24,11 +23,14 @@
         android:id="@+id/escribe_nuevatarea"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Escribe el nuevo evento"
-        android:inputType="textShortMessage"
         android:layout_margin="30dp"
+        android:background="@color/white"
         android:gravity="center"
-        android:background="@color/white"/>
+        android:hint="@string/escribe_el_nuevo_evento"
+        android:inputType="textShortMessage"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints=""
+        android:importantForAutofill="no" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,12 +54,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Entrar"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
                     android:layout_centerInParent="true"
-                    android:textColor="@color/white" />
+                    android:layout_marginStart="8dp"
+                    android:text="@string/elige_hora"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -74,9 +76,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="8dp"
-                    android:text="Calendario"
+                    android:text="@string/selecciona_fecha"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:gravity="center"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -92,10 +94,10 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="25dp"
-                android:text="00:00" />
+                android:textSize="25sp"
+                android:text="@string/_00_000" />
 
             <TextView
                 android:id="@+id/texto_fechaseleccionadatarea"
@@ -103,10 +105,10 @@
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="25dp"
-                android:text="xx/xx/xx" />
+                android:textSize="25sp"
+                android:text="@string/xx_xx_xx" />
         </LinearLayout>
 
     </LinearLayout>
@@ -126,9 +128,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
-            android:text="Listo"
+            android:text="@string/listo"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </RelativeLayout>
 

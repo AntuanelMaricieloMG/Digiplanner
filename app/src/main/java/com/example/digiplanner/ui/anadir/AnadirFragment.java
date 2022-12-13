@@ -1,37 +1,22 @@
 package com.example.digiplanner.ui.anadir;
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridLayout;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 import com.example.digiplanner.R;
-import com.example.digiplanner.ui.AdaptadorGridDias;
 import com.example.digiplanner.ui.AdaptadorGridTareas;
-import com.example.digiplanner.ui.postits.PostitsFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class AnadirFragment extends Fragment {
-    Context context;
+
     RecyclerView listaTareas;
     List<String> elementosTarea;
     List<Integer> images;
